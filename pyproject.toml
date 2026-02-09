@@ -14,3 +14,4 @@ build-backend = "flit_core.buildapi"
 
 [tool.bench]
 app-name = "pluto_theme"
+frappe-dependencies = ["version-16"]

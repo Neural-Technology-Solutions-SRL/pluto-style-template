@@ -1,0 +1,177 @@
+/* =========================================================================
+   Pluto Theme — Design Tokens (CSS Custom Properties)
+   =========================================================================
+   Edit these variables to change the entire look and feel of the app.
+   Every component file references these tokens, so a single change here
+   propagates everywhere.
+   ========================================================================= */
+
+:root {
+	/* -----------------------------------------------------------------
+	   Brand colours
+	   ----------------------------------------------------------------- */
+	--pluto-primary:           #6C5CE7;
+	--pluto-primary-light:     #A29BFE;
+	--pluto-primary-dark:      #4A3FCF;
+	--pluto-primary-bg:        #F0EEFF;
+
+	--pluto-secondary:         #00CEC9;
+	--pluto-secondary-light:   #81ECEC;
+	--pluto-secondary-dark:    #00A8A3;
+
+	--pluto-accent:            #FD79A8;
+	--pluto-accent-light:      #FFB8D0;
+	--pluto-accent-dark:       #E84393;
+
+	/* -----------------------------------------------------------------
+	   Neutral palette
+	   ----------------------------------------------------------------- */
+	--pluto-white:             #FFFFFF;
+	--pluto-gray-50:           #FAFBFC;
+	--pluto-gray-100:          #F4F5F7;
+	--pluto-gray-200:          #EBECF0;
+	--pluto-gray-300:          #DFE1E6;
+	--pluto-gray-400:          #C1C7D0;
+	--pluto-gray-500:          #A5ADBA;
+	--pluto-gray-600:          #6B778C;
+	--pluto-gray-700:          #505F79;
+	--pluto-gray-800:          #344563;
+	--pluto-gray-900:          #172B4D;
+	--pluto-black:             #091E42;
+
+	/* -----------------------------------------------------------------
+	   Semantic / feedback colours
+	   ----------------------------------------------------------------- */
+	--pluto-success:           #00B894;
+	--pluto-success-light:     #D4EFDF;
+	--pluto-warning:           #FDCB6E;
+	--pluto-warning-light:     #FEF3D5;
+	--pluto-danger:            #D63031;
+	--pluto-danger-light:      #FADBD8;
+	--pluto-info:              #0984E3;
+	--pluto-info-light:        #D6EAF8;
+
+	/* -----------------------------------------------------------------
+	   Typography
+	   ----------------------------------------------------------------- */
+	--pluto-font-family:       -apple-system, BlinkMacSystemFont, "Inter",
+	                           "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+	                           "Helvetica Neue", Arial, sans-serif;
+	--pluto-font-family-mono:  "JetBrains Mono", "Fira Code", "SF Mono",
+	                           SFMono-Regular, Consolas, "Liberation Mono",
+	                           Menlo, monospace;
+
+	--pluto-font-size-xs:      0.6875rem;   /* 11px */
+	--pluto-font-size-sm:      0.75rem;     /* 12px */
+	--pluto-font-size-base:    0.8125rem;   /* 13px — Frappe default */
+	--pluto-font-size-md:      0.875rem;    /* 14px */
+	--pluto-font-size-lg:      1rem;        /* 16px */
+	--pluto-font-size-xl:      1.25rem;     /* 20px */
+	--pluto-font-size-2xl:     1.5rem;      /* 24px */
+	--pluto-font-size-3xl:     1.875rem;    /* 30px */
+
+	--pluto-font-weight-normal:  400;
+	--pluto-font-weight-medium:  500;
+	--pluto-font-weight-semi:    600;
+	--pluto-font-weight-bold:    700;
+
+	--pluto-line-height:       1.5;
+	--pluto-line-height-tight: 1.25;
+
+	/* -----------------------------------------------------------------
+	   Spacing scale
+	   ----------------------------------------------------------------- */
+	--pluto-space-0:   0;
+	--pluto-space-1:   0.25rem;   /* 4px  */
+	--pluto-space-2:   0.5rem;    /* 8px  */
+	--pluto-space-3:   0.75rem;   /* 12px */
+	--pluto-space-4:   1rem;      /* 16px */
+	--pluto-space-5:   1.5rem;    /* 24px */
+	--pluto-space-6:   2rem;      /* 32px */
+	--pluto-space-8:   3rem;      /* 48px */
+	--pluto-space-10:  4rem;      /* 64px */
+
+	/* -----------------------------------------------------------------
+	   Border radius
+	   ----------------------------------------------------------------- */
+	--pluto-radius-sm:    0.25rem;   /* 4px  */
+	--pluto-radius:       0.5rem;    /* 8px  */
+	--pluto-radius-md:    0.625rem;  /* 10px */
+	--pluto-radius-lg:    0.75rem;   /* 12px */
+	--pluto-radius-xl:    1rem;      /* 16px */
+	--pluto-radius-full:  9999px;
+
+	/* -----------------------------------------------------------------
+	   Shadows
+	   ----------------------------------------------------------------- */
+	--pluto-shadow-xs:    0 1px 2px rgba(9,30,66,0.06);
+	--pluto-shadow-sm:    0 1px 3px rgba(9,30,66,0.08),
+	                      0 1px 2px rgba(9,30,66,0.06);
+	--pluto-shadow:       0 4px 6px rgba(9,30,66,0.07),
+	                      0 2px 4px rgba(9,30,66,0.06);
+	--pluto-shadow-md:    0 6px 12px rgba(9,30,66,0.08),
+	                      0 3px 6px rgba(9,30,66,0.06);
+	--pluto-shadow-lg:    0 10px 20px rgba(9,30,66,0.10),
+	                      0 6px 6px rgba(9,30,66,0.06);
+	--pluto-shadow-xl:    0 20px 40px rgba(9,30,66,0.12);
+
+	/* -----------------------------------------------------------------
+	   Transitions
+	   ----------------------------------------------------------------- */
+	--pluto-transition-fast:   150ms ease;
+	--pluto-transition:        250ms ease;
+	--pluto-transition-slow:   400ms ease;
+
+	/* -----------------------------------------------------------------
+	   Z-index layers
+	   ----------------------------------------------------------------- */
+	--pluto-z-dropdown:  1000;
+	--pluto-z-sticky:    1020;
+	--pluto-z-navbar:    1030;
+	--pluto-z-sidebar:   1035;
+	--pluto-z-modal:     1050;
+	--pluto-z-popover:   1060;
+	--pluto-z-tooltip:   1070;
+	--pluto-z-toast:     1080;
+
+	/* -----------------------------------------------------------------
+	   Layout
+	   ----------------------------------------------------------------- */
+	--pluto-navbar-height:      50px;
+	--pluto-sidebar-width:      240px;
+	--pluto-sidebar-collapsed:  56px;
+	--pluto-page-max-width:     1400px;
+	--pluto-page-padding:       var(--pluto-space-5);
+}
+
+/* Dark mode overrides — activate with [data-theme="dark"] on <html> */
+[data-theme="dark"] {
+	--pluto-white:       #1A1A2E;
+	--pluto-gray-50:     #1E1E32;
+	--pluto-gray-100:    #25253D;
+	--pluto-gray-200:    #2D2D48;
+	--pluto-gray-300:    #3A3A55;
+	--pluto-gray-400:    #505068;
+	--pluto-gray-500:    #7C7C94;
+	--pluto-gray-600:    #A0A0B4;
+	--pluto-gray-700:    #C4C4D4;
+	--pluto-gray-800:    #DDDDE8;
+	--pluto-gray-900:    #EEEEFC;
+	--pluto-black:       #F4F4FF;
+
+	--pluto-primary-bg:      rgba(108,92,231,0.15);
+	--pluto-success-light:   rgba(0,184,148,0.15);
+	--pluto-warning-light:   rgba(253,203,110,0.15);
+	--pluto-danger-light:    rgba(214,48,49,0.15);
+	--pluto-info-light:      rgba(9,132,227,0.15);
+
+	--pluto-shadow-xs:   0 1px 2px rgba(0,0,0,0.20);
+	--pluto-shadow-sm:   0 1px 3px rgba(0,0,0,0.24),
+	                     0 1px 2px rgba(0,0,0,0.20);
+	--pluto-shadow:      0 4px 6px rgba(0,0,0,0.22),
+	                     0 2px 4px rgba(0,0,0,0.18);
+	--pluto-shadow-md:   0 6px 12px rgba(0,0,0,0.24),
+	                     0 3px 6px rgba(0,0,0,0.18);
+	--pluto-shadow-lg:   0 10px 20px rgba(0,0,0,0.28),
+	                     0 6px 6px rgba(0,0,0,0.18);
+}

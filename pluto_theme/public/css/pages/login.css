@@ -1,0 +1,104 @@
+/* =========================================================================
+   Pluto Theme — Login & Signup Pages
+   ========================================================================= */
+
+/* Login page background */
+.page-card {
+	border: 1px solid var(--pluto-gray-200) !important;
+	border-radius: var(--pluto-radius-lg) !important;
+	box-shadow: var(--pluto-shadow-lg) !important;
+	padding: var(--pluto-space-6) !important;
+	max-width: 420px;
+	margin: 0 auto;
+}
+
+body.frappe-login-page,
+#page-login {
+	background: var(--pluto-gray-50);
+}
+
+/* Login card title */
+.page-card-head .title {
+	font-size: var(--pluto-font-size-2xl);
+	font-weight: var(--pluto-font-weight-bold);
+	color: var(--pluto-gray-900);
+	margin-bottom: var(--pluto-space-1);
+}
+
+.page-card-head .indicator-pill {
+	display: none;
+}
+
+/* Login form fields */
+.page-card .form-group input {
+	border: 1px solid var(--pluto-gray-300);
+	border-radius: var(--pluto-radius);
+	padding: var(--pluto-space-2) var(--pluto-space-3);
+	font-size: var(--pluto-font-size-md);
+	height: auto;
+}
+
+.page-card .form-group input:focus {
+	border-color: var(--pluto-primary) !important;
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg) !important;
+}
+
+/* Login button */
+.page-card .btn-login,
+.page-card .btn-primary {
+	background: var(--pluto-primary) !important;
+	border-color: var(--pluto-primary) !important;
+	border-radius: var(--pluto-radius) !important;
+	padding: var(--pluto-space-2) var(--pluto-space-4) !important;
+	font-size: var(--pluto-font-size-md) !important;
+	font-weight: var(--pluto-font-weight-semi) !important;
+	width: 100%;
+	margin-top: var(--pluto-space-3);
+}
+
+.page-card .btn-login:hover,
+.page-card .btn-primary:hover {
+	background: var(--pluto-primary-dark) !important;
+	border-color: var(--pluto-primary-dark) !important;
+}
+
+/* Social login buttons */
+.page-card .social-logins {
+	margin-top: var(--pluto-space-4);
+}
+
+.page-card .social-logins .btn-social {
+	border: 1px solid var(--pluto-gray-300);
+	border-radius: var(--pluto-radius);
+	padding: var(--pluto-space-2) var(--pluto-space-4);
+	font-size: var(--pluto-font-size-sm);
+	transition: all var(--pluto-transition-fast);
+}
+
+.page-card .social-logins .btn-social:hover {
+	background: var(--pluto-gray-50);
+	border-color: var(--pluto-gray-400);
+}
+
+/* "Forgot password" / links */
+.page-card a,
+.page-card .forgot-password {
+	color: var(--pluto-primary);
+	font-size: var(--pluto-font-size-sm);
+}
+
+.page-card a:hover {
+	color: var(--pluto-primary-dark);
+}
+
+/* Login logo */
+.page-card .login-logo img {
+	max-height: 48px;
+	margin-bottom: var(--pluto-space-4);
+}
+
+/* Divider */
+.page-card .or-divider {
+	color: var(--pluto-gray-400);
+	font-size: var(--pluto-font-size-xs);
+}

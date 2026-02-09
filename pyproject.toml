@@ -1,0 +1,16 @@
+[project]
+name = "pluto_theme"
+authors = [
+    { name = "Neural", email = "hello@neural.com" }
+]
+description = "Custom theme and styling overrides for Frappe / ERPNext v16"
+requires-python = ">=3.10,<4"
+readme = "README.md"
+dynamic = ["version"]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench]
+app-name = "pluto_theme"

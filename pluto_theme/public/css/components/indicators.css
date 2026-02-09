@@ -1,0 +1,80 @@
+/* =========================================================================
+   Pluto Theme — Status Indicators, Badges & Tags
+   ========================================================================= */
+
+/* Indicator dots */
+.indicator-pill {
+	font-size: var(--pluto-font-size-xs);
+	font-weight: var(--pluto-font-weight-medium);
+	border-radius: var(--pluto-radius-full);
+	padding: 2px var(--pluto-space-2);
+}
+
+.indicator-pill.green,
+.indicator-pill[data-indicator="green"] {
+	background: var(--pluto-success-light);
+	color: var(--pluto-success);
+}
+
+.indicator-pill.red,
+.indicator-pill[data-indicator="red"] {
+	background: var(--pluto-danger-light);
+	color: var(--pluto-danger);
+}
+
+.indicator-pill.orange,
+.indicator-pill[data-indicator="orange"] {
+	background: var(--pluto-warning-light);
+	color: #E17D24;
+}
+
+.indicator-pill.yellow,
+.indicator-pill[data-indicator="yellow"] {
+	background: var(--pluto-warning-light);
+	color: #B8860B;
+}
+
+.indicator-pill.blue,
+.indicator-pill[data-indicator="blue"] {
+	background: var(--pluto-info-light);
+	color: var(--pluto-info);
+}
+
+.indicator-pill.purple,
+.indicator-pill[data-indicator="purple"] {
+	background: var(--pluto-primary-bg);
+	color: var(--pluto-primary);
+}
+
+.indicator-pill.gray,
+.indicator-pill.grey,
+.indicator-pill[data-indicator="gray"],
+.indicator-pill[data-indicator="grey"] {
+	background: var(--pluto-gray-100);
+	color: var(--pluto-gray-600);
+}
+
+/* Tag pills */
+.tag-pill,
+.tags .tag-pill {
+	background: var(--pluto-gray-100);
+	color: var(--pluto-gray-700);
+	border-radius: var(--pluto-radius-full);
+	font-size: var(--pluto-font-size-xs);
+	padding: 1px var(--pluto-space-2);
+	transition: background var(--pluto-transition-fast);
+}
+
+.tag-pill:hover {
+	background: var(--pluto-primary-bg);
+	color: var(--pluto-primary);
+}
+
+/* Badge count */
+.badge,
+.badge-pill {
+	font-size: var(--pluto-font-size-xs);
+	font-weight: var(--pluto-font-weight-semi);
+	border-radius: var(--pluto-radius-full);
+	padding: 2px 6px;
+}

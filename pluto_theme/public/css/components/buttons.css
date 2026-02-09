@@ -1,0 +1,120 @@
+/* =========================================================================
+   Pluto Theme — Buttons
+   ========================================================================= */
+
+.btn {
+	font-family: var(--pluto-font-family);
+	font-size: var(--pluto-font-size-sm);
+	font-weight: var(--pluto-font-weight-medium);
+	border-radius: var(--pluto-radius);
+	padding: var(--pluto-space-1) var(--pluto-space-3);
+	transition: all var(--pluto-transition-fast);
+	border: 1px solid transparent;
+	line-height: 1.5;
+}
+
+.btn:focus,
+.btn:focus-visible {
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg);
+	outline: none;
+}
+
+/* Primary button */
+.btn-primary,
+.btn-primary-dark {
+	background: var(--pluto-primary) !important;
+	border-color: var(--pluto-primary) !important;
+	color: var(--pluto-white) !important;
+}
+
+.btn-primary:hover,
+.btn-primary-dark:hover {
+	background: var(--pluto-primary-dark) !important;
+	border-color: var(--pluto-primary-dark) !important;
+	box-shadow: var(--pluto-shadow-sm);
+}
+
+.btn-primary:active,
+.btn-primary-dark:active {
+	background: var(--pluto-primary-dark) !important;
+	transform: translateY(0);
+}
+
+/* Secondary / default button */
+.btn-default,
+.btn-secondary {
+	background: var(--pluto-white) !important;
+	border-color: var(--pluto-gray-300) !important;
+	color: var(--pluto-gray-800) !important;
+}
+
+.btn-default:hover,
+.btn-secondary:hover {
+	background: var(--pluto-gray-50) !important;
+	border-color: var(--pluto-gray-400) !important;
+	box-shadow: var(--pluto-shadow-xs);
+}
+
+/* Success */
+.btn-success {
+	background: var(--pluto-success) !important;
+	border-color: var(--pluto-success) !important;
+	color: var(--pluto-white) !important;
+}
+
+.btn-success:hover {
+	filter: brightness(0.95);
+	box-shadow: var(--pluto-shadow-sm);
+}
+
+/* Danger */
+.btn-danger {
+	background: var(--pluto-danger) !important;
+	border-color: var(--pluto-danger) !important;
+	color: var(--pluto-white) !important;
+}
+
+.btn-danger:hover {
+	filter: brightness(0.95);
+	box-shadow: var(--pluto-shadow-sm);
+}
+
+/* Warning */
+.btn-warning {
+	background: var(--pluto-warning) !important;
+	border-color: var(--pluto-warning) !important;
+	color: var(--pluto-gray-900) !important;
+}
+
+/* Info */
+.btn-info {
+	background: var(--pluto-info) !important;
+	border-color: var(--pluto-info) !important;
+	color: var(--pluto-white) !important;
+}
+
+/* Small buttons */
+.btn-xs,
+.btn-sm {
+	font-size: var(--pluto-font-size-xs);
+	padding: 2px var(--pluto-space-2);
+	border-radius: var(--pluto-radius-sm);
+}
+
+/* Icon-only buttons */
+.btn-icon {
+	padding: var(--pluto-space-1);
+	line-height: 1;
+}
+
+/* Like button (Frappe-specific) */
+.like-active-item .like-action {
+	color: var(--pluto-danger) !important;
+}
+
+/* Frappe page primary action */
+.page-actions .btn-primary-dark,
+.page-actions .primary-action {
+	background: var(--pluto-primary) !important;
+	border-color: var(--pluto-primary) !important;
+}

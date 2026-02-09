@@ -1,0 +1,104 @@
+/* =========================================================================
+   Pluto Theme — Desk / Workspace
+   ========================================================================= */
+
+/* Page container */
+.page-container {
+	background: var(--pluto-gray-50);
+}
+
+#page-container {
+	background: var(--pluto-gray-50);
+}
+
+/* Main section */
+.main-section {
+	background: var(--pluto-gray-50);
+}
+
+/* Page head (title bar) */
+.page-head {
+	background: var(--pluto-white);
+	border-bottom: 1px solid var(--pluto-gray-200);
+	box-shadow: var(--pluto-shadow-xs);
+}
+
+.page-head .page-title .title-text {
+	font-size: var(--pluto-font-size-xl);
+	font-weight: var(--pluto-font-weight-bold);
+	color: var(--pluto-gray-900);
+}
+
+/* Breadcrumbs */
+.page-head .breadcrumb-area .breadcrumb {
+	font-size: var(--pluto-font-size-xs);
+}
+
+.page-head .breadcrumb-area .breadcrumb a {
+	color: var(--pluto-gray-500);
+	transition: color var(--pluto-transition-fast);
+}
+
+.page-head .breadcrumb-area .breadcrumb a:hover {
+	color: var(--pluto-primary);
+}
+
+/* Workspace */
+.workspace-container {
+	padding: var(--pluto-space-5);
+}
+
+/* Module cards on workspace */
+.widget-group .widget-group-head {
+	font-size: var(--pluto-font-size-lg);
+	font-weight: var(--pluto-font-weight-semi);
+	color: var(--pluto-gray-900);
+	margin-bottom: var(--pluto-space-3);
+}
+
+/* Onboarding widget */
+.onboarding-widget-box {
+	background: var(--pluto-primary-bg);
+	border: 1px solid var(--pluto-primary-light);
+	border-radius: var(--pluto-radius-md);
+}
+
+/* Form view wrapper */
+.form-page,
+.form-group .form-layout {
+	background: var(--pluto-white);
+	border-radius: var(--pluto-radius-md);
+	box-shadow: var(--pluto-shadow-xs);
+}
+
+/* Page actions bar */
+.page-actions {
+	gap: var(--pluto-space-2);
+}
+
+/* Quick entry dialog */
+.quick-entry .modal-body {
+	padding: var(--pluto-space-4);
+}
+
+/* Timeline / activity */
+.timeline-item {
+	border-bottom: 1px solid var(--pluto-gray-100);
+	padding: var(--pluto-space-3) 0;
+}
+
+.timeline-item .timeline-badge {
+	color: var(--pluto-gray-400);
+}
+
+.timeline-item .timeline-content {
+	font-size: var(--pluto-font-size-sm);
+	color: var(--pluto-gray-700);
+}
+
+/* Help / documentation panel */
+.overlay-sidebar {
+	background: var(--pluto-white);
+	border-left: 1px solid var(--pluto-gray-200);
+	box-shadow: var(--pluto-shadow-lg);
+}

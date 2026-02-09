@@ -1,0 +1,112 @@
+/* =========================================================================
+   Pluto Theme — Forms & Inputs
+   ========================================================================= */
+
+/* Text inputs, selects, textareas */
+.form-control,
+.input-with-feedback,
+.frappe-control input[type="text"],
+.frappe-control input[type="password"],
+.frappe-control input[type="email"],
+.frappe-control input[type="number"],
+.frappe-control input[type="date"],
+.frappe-control input[type="url"],
+.frappe-control select,
+.frappe-control textarea {
+	font-family: var(--pluto-font-family);
+	font-size: var(--pluto-font-size-sm);
+	border: 1px solid var(--pluto-gray-300);
+	border-radius: var(--pluto-radius);
+	background: var(--pluto-white);
+	color: var(--pluto-gray-900);
+	padding: var(--pluto-space-1) var(--pluto-space-3);
+	transition: border-color var(--pluto-transition-fast),
+	            box-shadow var(--pluto-transition-fast);
+}
+
+.form-control:focus,
+.input-with-feedback:focus,
+.frappe-control input:focus,
+.frappe-control select:focus,
+.frappe-control textarea:focus {
+	border-color: var(--pluto-primary) !important;
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg) !important;
+	outline: none;
+}
+
+/* Read-only / disabled */
+.form-control[disabled],
+.form-control[readonly],
+.form-group .control-value {
+	background: var(--pluto-gray-50);
+	color: var(--pluto-gray-600);
+	border-color: var(--pluto-gray-200);
+}
+
+/* Labels */
+.frappe-control .control-label,
+.form-group label {
+	font-size: var(--pluto-font-size-xs);
+	font-weight: var(--pluto-font-weight-semi);
+	color: var(--pluto-gray-600);
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+	margin-bottom: var(--pluto-space-1);
+}
+
+/* Section breaks */
+.section-head,
+.form-section .section-head {
+	border-bottom: 1px solid var(--pluto-gray-200);
+	padding-bottom: var(--pluto-space-2);
+	margin-bottom: var(--pluto-space-3);
+}
+
+.form-section .section-body {
+	padding: var(--pluto-space-3) 0;
+}
+
+/* Column breaks — add gutters */
+.form-column {
+	padding-right: var(--pluto-space-4);
+}
+
+/* Mandatory indicator */
+.has-error .form-control,
+.has-error .input-with-feedback {
+	border-color: var(--pluto-danger) !important;
+}
+
+.reqd .control-label::after {
+	color: var(--pluto-danger);
+}
+
+/* Form layout card */
+.form-layout {
+	background: var(--pluto-white);
+	border-radius: var(--pluto-radius-md);
+}
+
+/* Comment / activity section */
+.comment-box .ql-editor,
+.comment-input-control .ql-editor {
+	border-radius: var(--pluto-radius);
+	border: 1px solid var(--pluto-gray-300);
+	min-height: 80px;
+}
+
+.comment-box .ql-editor:focus {
+	border-color: var(--pluto-primary);
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg);
+}
+
+/* Link field */
+.frappe-control[data-fieldtype="Link"] .link-btn {
+	color: var(--pluto-primary);
+}
+
+/* Check / toggle */
+.frappe-control[data-fieldtype="Check"] .checkbox .label-area {
+	font-size: var(--pluto-font-size-sm);
+	color: var(--pluto-gray-700);
+}

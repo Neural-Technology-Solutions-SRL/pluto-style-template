@@ -1,0 +1,67 @@
+/* =========================================================================
+   Pluto Theme — Print Styles
+   =========================================================================
+   These styles apply to print format rendering and @media print.
+   ========================================================================= */
+
+@media print {
+	body {
+		font-family: var(--pluto-font-family);
+		color: #000;
+		background: #fff;
+	}
+
+	.navbar,
+	.page-head,
+	.page-actions,
+	.desk-sidebar,
+	.layout-side-section,
+	.comment-box,
+	.form-footer,
+	footer {
+		display: none !important;
+	}
+
+	.print-format {
+		font-size: 10pt;
+		line-height: 1.4;
+	}
+
+	.print-format h1 {
+		font-size: 18pt;
+		font-weight: 700;
+	}
+
+	.print-format h2 {
+		font-size: 14pt;
+		font-weight: 600;
+	}
+
+	.print-format table {
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	.print-format table th,
+	.print-format table td {
+		border: 1px solid #ddd;
+		padding: 4pt 6pt;
+		font-size: 9pt;
+	}
+
+	.print-format table th {
+		background: #f4f4f4;
+		font-weight: 600;
+	}
+}
+
+/* Print preview on screen */
+.print-preview {
+	background: var(--pluto-white);
+	border: 1px solid var(--pluto-gray-200);
+	border-radius: var(--pluto-radius-md);
+	box-shadow: var(--pluto-shadow-sm);
+	padding: var(--pluto-space-6);
+	max-width: 800px;
+	margin: var(--pluto-space-4) auto;
+}

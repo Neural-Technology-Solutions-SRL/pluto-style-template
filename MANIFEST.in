@@ -1,0 +1,21 @@
+include MANIFEST.in
+include requirements.txt
+include *.md
+include *.py
+include *.txt
+include license.txt
+recursive-include pluto_theme *.py
+recursive-include pluto_theme *.txt
+recursive-include pluto_theme *.md
+recursive-include pluto_theme *.html
+recursive-include pluto_theme *.css
+recursive-include pluto_theme *.scss
+recursive-include pluto_theme *.js
+recursive-include pluto_theme *.json
+recursive-include pluto_theme *.png
+recursive-include pluto_theme *.jpg
+recursive-include pluto_theme *.svg
+recursive-include pluto_theme *.woff
+recursive-include pluto_theme *.woff2
+recursive-include pluto_theme *.ttf
+recursive-include pluto_theme *.eot

@@ -1,0 +1,61 @@
+/* =========================================================================
+   Pluto Theme — Cards & Panels
+   ========================================================================= */
+
+.frappe-card,
+.widget.widget-shadow,
+.form-dashboard,
+.number-widget-box,
+.shortcut-widget-box {
+	background: var(--pluto-white);
+	border: 1px solid var(--pluto-gray-200);
+	border-radius: var(--pluto-radius-md);
+	box-shadow: var(--pluto-shadow-xs);
+	transition: box-shadow var(--pluto-transition), border-color var(--pluto-transition);
+}
+
+.frappe-card:hover,
+.widget.widget-shadow:hover {
+	box-shadow: var(--pluto-shadow-sm);
+	border-color: var(--pluto-gray-300);
+}
+
+/* Widget title */
+.widget .widget-head .widget-title {
+	font-size: var(--pluto-font-size-md);
+	font-weight: var(--pluto-font-weight-semi);
+	color: var(--pluto-gray-900);
+}
+
+/* Dashboard number cards */
+.number-widget-box .widget-head .number {
+	font-size: var(--pluto-font-size-2xl);
+	font-weight: var(--pluto-font-weight-bold);
+	color: var(--pluto-gray-900);
+}
+
+/* Shortcut widgets */
+.shortcut-widget-box {
+	padding: var(--pluto-space-3) var(--pluto-space-4);
+	border-radius: var(--pluto-radius);
+}
+
+.shortcut-widget-box:hover {
+	background: var(--pluto-primary-bg);
+	border-color: var(--pluto-primary-light);
+}
+
+/* New card / chart area */
+.chart-container {
+	background: var(--pluto-white);
+	border: 1px solid var(--pluto-gray-200);
+	border-radius: var(--pluto-radius-md);
+	padding: var(--pluto-space-4);
+}
+
+/* Section head in workspace cards */
+.section-head {
+	font-size: var(--pluto-font-size-md);
+	font-weight: var(--pluto-font-weight-semi);
+	color: var(--pluto-gray-800);
+}

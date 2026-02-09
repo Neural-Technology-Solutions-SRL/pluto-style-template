@@ -1,0 +1,27 @@
+/* =========================================================================
+   Pluto Theme — Footer
+   ========================================================================= */
+
+.web-footer,
+footer {
+	background: var(--pluto-gray-50);
+	border-top: 1px solid var(--pluto-gray-200);
+	color: var(--pluto-gray-600);
+	font-size: var(--pluto-font-size-sm);
+	padding: var(--pluto-space-5) 0;
+}
+
+footer a {
+	color: var(--pluto-gray-700);
+	transition: color var(--pluto-transition-fast);
+}
+
+footer a:hover {
+	color: var(--pluto-primary);
+}
+
+/* "Powered by" badge in Frappe */
+.footer-powered {
+	font-size: var(--pluto-font-size-xs);
+	color: var(--pluto-gray-400);
+}

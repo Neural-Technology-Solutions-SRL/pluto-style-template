@@ -1,0 +1,97 @@
+/* =========================================================================
+   Pluto Theme — List View & Report View
+   ========================================================================= */
+
+/* List view container */
+.frappe-list {
+	background: var(--pluto-white);
+	border-radius: var(--pluto-radius-md);
+}
+
+/* List header row */
+.list-row-head {
+	background: var(--pluto-gray-50);
+	border-bottom: 2px solid var(--pluto-gray-200);
+}
+
+.list-row-head .list-row-col {
+	font-size: var(--pluto-font-size-xs);
+	font-weight: var(--pluto-font-weight-semi);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--pluto-gray-600);
+}
+
+/* List rows */
+.list-row {
+	border-bottom: 1px solid var(--pluto-gray-100);
+	transition: background var(--pluto-transition-fast);
+}
+
+.list-row:hover {
+	background: var(--pluto-gray-50);
+}
+
+.list-row .list-row-col {
+	font-size: var(--pluto-font-size-sm);
+	color: var(--pluto-gray-800);
+}
+
+/* Subject / title link in list */
+.list-row .level-left .list-row--col .ellipsis,
+.list-row .list-row-col.ellipsis a {
+	color: var(--pluto-gray-900);
+	font-weight: var(--pluto-font-weight-medium);
+	transition: color var(--pluto-transition-fast);
+}
+
+.list-row .level-left .list-row--col .ellipsis:hover,
+.list-row .list-row-col.ellipsis a:hover {
+	color: var(--pluto-primary);
+}
+
+/* List row checkbox */
+.list-row .list-row-checkbox {
+	accent-color: var(--pluto-primary);
+}
+
+/* Selected row */
+.list-row.selected {
+	background: var(--pluto-primary-bg) !important;
+}
+
+/* Pagination */
+.list-paging-area {
+	border-top: 1px solid var(--pluto-gray-200);
+	padding: var(--pluto-space-2) var(--pluto-space-4);
+}
+
+.list-paging-area .btn-paging {
+	font-size: var(--pluto-font-size-xs);
+}
+
+/* Filters area */
+.filter-section {
+	padding: var(--pluto-space-2) var(--pluto-space-4);
+	border-bottom: 1px solid var(--pluto-gray-100);
+}
+
+/* Report view */
+.report-wrapper .datatable .dt-header .dt-cell--header {
+	background: var(--pluto-gray-50);
+	font-weight: var(--pluto-font-weight-semi);
+	font-size: var(--pluto-font-size-xs);
+	text-transform: uppercase;
+}
+
+.report-wrapper .datatable .dt-cell {
+	font-size: var(--pluto-font-size-sm);
+	border-color: var(--pluto-gray-100);
+}
+
+/* Empty state */
+.frappe-list .no-result {
+	color: var(--pluto-gray-500);
+	font-size: var(--pluto-font-size-md);
+	padding: var(--pluto-space-8) var(--pluto-space-4);
+}

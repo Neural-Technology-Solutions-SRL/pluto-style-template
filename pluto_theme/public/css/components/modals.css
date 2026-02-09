@@ -1,0 +1,65 @@
+/* =========================================================================
+   Pluto Theme — Modals & Dialogs
+   ========================================================================= */
+
+.modal-content {
+	border: none;
+	border-radius: var(--pluto-radius-lg);
+	box-shadow: var(--pluto-shadow-xl);
+	overflow: hidden;
+}
+
+.modal-header {
+	background: var(--pluto-white);
+	border-bottom: 1px solid var(--pluto-gray-200);
+	padding: var(--pluto-space-4) var(--pluto-space-5);
+}
+
+.modal-header .modal-title {
+	font-size: var(--pluto-font-size-lg);
+	font-weight: var(--pluto-font-weight-semi);
+	color: var(--pluto-gray-900);
+}
+
+.modal-header .close,
+.modal-header .btn-close {
+	color: var(--pluto-gray-500);
+	opacity: 0.7;
+	transition: opacity var(--pluto-transition-fast);
+}
+
+.modal-header .close:hover,
+.modal-header .btn-close:hover {
+	opacity: 1;
+	color: var(--pluto-gray-900);
+}
+
+.modal-body {
+	padding: var(--pluto-space-5);
+	color: var(--pluto-gray-800);
+}
+
+.modal-footer {
+	background: var(--pluto-gray-50);
+	border-top: 1px solid var(--pluto-gray-200);
+	padding: var(--pluto-space-3) var(--pluto-space-5);
+}
+
+/* Backdrop */
+.modal-backdrop {
+	background: var(--pluto-black);
+}
+
+.modal-backdrop.show {
+	opacity: 0.5;
+}
+
+/* Frappe dialog */
+.frappe-dialog .modal-dialog {
+	border-radius: var(--pluto-radius-lg);
+}
+
+/* Message dialog */
+.msgprint-dialog .modal-body {
+	font-size: var(--pluto-font-size-md);
+}

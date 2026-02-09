@@ -1,0 +1,75 @@
+/* =========================================================================
+   Pluto Theme — Navbar
+   ========================================================================= */
+
+.navbar {
+	height: var(--pluto-navbar-height);
+	background: var(--pluto-white) !important;
+	border-bottom: 1px solid var(--pluto-gray-200);
+	box-shadow: var(--pluto-shadow-xs);
+	transition: background var(--pluto-transition), box-shadow var(--pluto-transition);
+}
+
+.navbar .container {
+	max-width: 100%;
+}
+
+/* Brand / logo */
+.navbar-brand {
+	font-weight: var(--pluto-font-weight-semi);
+	color: var(--pluto-gray-900) !important;
+}
+
+.navbar-brand img {
+	max-height: 28px;
+}
+
+/* Nav links */
+.navbar .nav-link,
+.navbar .navbar-nav > li > a {
+	color: var(--pluto-gray-700) !important;
+	font-size: var(--pluto-font-size-sm);
+	font-weight: var(--pluto-font-weight-medium);
+	transition: color var(--pluto-transition-fast);
+	border-radius: var(--pluto-radius-sm);
+	padding: var(--pluto-space-1) var(--pluto-space-2) !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .navbar-nav > li > a:hover {
+	color: var(--pluto-primary) !important;
+	background: var(--pluto-primary-bg);
+}
+
+/* Search bar in navbar */
+.navbar .search-bar,
+.navbar #navbar-search {
+	border-radius: var(--pluto-radius);
+	border: 1px solid var(--pluto-gray-300);
+	background: var(--pluto-gray-50);
+	transition: border-color var(--pluto-transition-fast),
+	            box-shadow var(--pluto-transition-fast);
+}
+
+.navbar .search-bar:focus-within,
+.navbar #navbar-search:focus {
+	border-color: var(--pluto-primary-light);
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg);
+	background: var(--pluto-white);
+}
+
+/* Notifications bell / avatar */
+.navbar .navbar-right .dropdown-toggle {
+	color: var(--pluto-gray-600) !important;
+	transition: color var(--pluto-transition-fast);
+}
+
+.navbar .navbar-right .dropdown-toggle:hover {
+	color: var(--pluto-primary) !important;
+}
+
+/* Awesomebar */
+#navbar-search,
+.awesomebar-input {
+	font-size: var(--pluto-font-size-sm);
+}

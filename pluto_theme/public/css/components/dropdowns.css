@@ -1,0 +1,59 @@
+/* =========================================================================
+   Pluto Theme — Dropdowns & Menus
+   ========================================================================= */
+
+.dropdown-menu {
+	border: 1px solid var(--pluto-gray-200);
+	border-radius: var(--pluto-radius-md);
+	box-shadow: var(--pluto-shadow-md);
+	padding: var(--pluto-space-1) 0;
+	background: var(--pluto-white);
+	animation: pluto-dropdown-in 150ms ease;
+}
+
+@keyframes pluto-dropdown-in {
+	from {
+		opacity: 0;
+		transform: translateY(-4px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.dropdown-menu .dropdown-item,
+.dropdown-menu > li > a {
+	font-size: var(--pluto-font-size-sm);
+	color: var(--pluto-gray-800);
+	padding: var(--pluto-space-2) var(--pluto-space-4);
+	transition: background var(--pluto-transition-fast),
+	            color var(--pluto-transition-fast);
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu > li > a:hover {
+	background: var(--pluto-primary-bg);
+	color: var(--pluto-primary);
+}
+
+.dropdown-menu .dropdown-item:active,
+.dropdown-menu > li > a:active {
+	background: var(--pluto-primary);
+	color: var(--pluto-white);
+}
+
+.dropdown-menu .dropdown-divider {
+	border-color: var(--pluto-gray-100);
+	margin: var(--pluto-space-1) 0;
+}
+
+/* Dropdown header */
+.dropdown-menu .dropdown-header {
+	font-size: var(--pluto-font-size-xs);
+	font-weight: var(--pluto-font-weight-semi);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--pluto-gray-500);
+	padding: var(--pluto-space-2) var(--pluto-space-4);
+}

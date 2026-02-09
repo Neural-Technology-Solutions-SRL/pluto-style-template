@@ -1,0 +1,83 @@
+/* =========================================================================
+   Pluto Theme — Typography
+   ========================================================================= */
+
+body {
+	font-family: var(--pluto-font-family);
+	font-size: var(--pluto-font-size-base);
+	line-height: var(--pluto-line-height);
+	color: var(--pluto-gray-900);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: var(--pluto-font-family);
+	font-weight: var(--pluto-font-weight-semi);
+	color: var(--pluto-gray-900);
+	line-height: var(--pluto-line-height-tight);
+}
+
+h1, .h1 { font-size: var(--pluto-font-size-3xl); }
+h2, .h2 { font-size: var(--pluto-font-size-2xl); }
+h3, .h3 { font-size: var(--pluto-font-size-xl); }
+h4, .h4 { font-size: var(--pluto-font-size-lg); }
+h5, .h5 { font-size: var(--pluto-font-size-md); }
+h6, .h6 { font-size: var(--pluto-font-size-sm); font-weight: var(--pluto-font-weight-bold); }
+
+/* Links */
+a {
+	color: var(--pluto-primary);
+	transition: color var(--pluto-transition-fast);
+}
+
+a:hover {
+	color: var(--pluto-primary-dark);
+}
+
+/* Code */
+code, pre, kbd, samp {
+	font-family: var(--pluto-font-family-mono);
+}
+
+code {
+	font-size: 0.9em;
+	background: var(--pluto-gray-100);
+	color: var(--pluto-accent-dark);
+	padding: 1px 4px;
+	border-radius: var(--pluto-radius-sm);
+}
+
+pre {
+	background: var(--pluto-gray-900);
+	color: var(--pluto-gray-100);
+	border-radius: var(--pluto-radius);
+	padding: var(--pluto-space-3);
+	font-size: var(--pluto-font-size-sm);
+	overflow-x: auto;
+}
+
+pre code {
+	background: none;
+	color: inherit;
+	padding: 0;
+}
+
+/* Muted / secondary text */
+.text-muted,
+.text-secondary {
+	color: var(--pluto-gray-500) !important;
+}
+
+/* Small text */
+small, .small {
+	font-size: var(--pluto-font-size-xs);
+}
+
+/* Text selection */
+::selection {
+	background: var(--pluto-primary-light);
+	color: var(--pluto-gray-900);
+}

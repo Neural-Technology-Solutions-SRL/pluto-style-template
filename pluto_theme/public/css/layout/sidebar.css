@@ -1,0 +1,74 @@
+/* =========================================================================
+   Pluto Theme — Sidebar
+   ========================================================================= */
+
+.frappe-control[data-fieldtype="Section Break"],
+.layout-side-section,
+.desk-sidebar {
+	/* Intentionally blank — add overrides below */
+}
+
+/* Desk sidebar (left navigation) */
+.desk-sidebar {
+	background: var(--pluto-gray-50);
+	border-right: 1px solid var(--pluto-gray-200);
+	width: var(--pluto-sidebar-width);
+	transition: width var(--pluto-transition);
+}
+
+.desk-sidebar .sidebar-menu {
+	padding: var(--pluto-space-2) 0;
+}
+
+.desk-sidebar .sidebar-menu a,
+.desk-sidebar .sidebar-menu .sidebar-label {
+	color: var(--pluto-gray-700);
+	font-size: var(--pluto-font-size-sm);
+	font-weight: var(--pluto-font-weight-medium);
+	padding: var(--pluto-space-2) var(--pluto-space-4);
+	border-radius: var(--pluto-radius-sm);
+	margin: 1px var(--pluto-space-2);
+	transition: background var(--pluto-transition-fast),
+	            color var(--pluto-transition-fast);
+}
+
+.desk-sidebar .sidebar-menu a:hover,
+.desk-sidebar .sidebar-menu .sidebar-label:hover {
+	background: var(--pluto-primary-bg);
+	color: var(--pluto-primary);
+}
+
+.desk-sidebar .sidebar-menu a.active,
+.desk-sidebar .sidebar-menu a.selected {
+	background: var(--pluto-primary-bg);
+	color: var(--pluto-primary);
+	font-weight: var(--pluto-font-weight-semi);
+}
+
+/* Sidebar icons */
+.desk-sidebar .sidebar-menu .sidebar-icon {
+	color: var(--pluto-gray-500);
+	margin-right: var(--pluto-space-2);
+	transition: color var(--pluto-transition-fast);
+}
+
+.desk-sidebar .sidebar-menu a:hover .sidebar-icon,
+.desk-sidebar .sidebar-menu a.active .sidebar-icon {
+	color: var(--pluto-primary);
+}
+
+/* Page sidebar (right panel on forms) */
+.layout-side-section {
+	background: var(--pluto-gray-50);
+	border-left: 1px solid var(--pluto-gray-200);
+	padding: var(--pluto-space-4);
+}
+
+.layout-side-section .sidebar-label {
+	font-size: var(--pluto-font-size-xs);
+	font-weight: var(--pluto-font-weight-semi);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--pluto-gray-500);
+	margin-bottom: var(--pluto-space-2);
+}

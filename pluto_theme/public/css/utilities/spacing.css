@@ -1,0 +1,48 @@
+/* =========================================================================
+   Pluto Theme — Spacing & Layout Utilities
+   ========================================================================= */
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--pluto-gray-300);
+	border-radius: var(--pluto-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--pluto-gray-400);
+}
+
+/* Focus ring utility */
+.pluto-focus-ring:focus,
+.pluto-focus-ring:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg);
+}
+
+/* Smooth transitions on all interactive elements */
+a,
+button,
+input,
+select,
+textarea,
+.btn,
+.nav-link {
+	transition: color var(--pluto-transition-fast),
+	            background var(--pluto-transition-fast),
+	            border-color var(--pluto-transition-fast),
+	            box-shadow var(--pluto-transition-fast);
+}
+
+/* Frappe container width override */
+.container {
+	max-width: var(--pluto-page-max-width);
+}

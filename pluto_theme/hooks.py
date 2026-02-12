@@ -45,11 +45,9 @@ web_include_js = []
 #     "filters": [],
 # }
 
-# Website context
-# website_context = {
-#     "favicon": "/assets/pluto_theme/images/favicon.ico",
-#     "splash_image": "/assets/pluto_theme/images/splash.png",
-# }
+website_context = {
+    "splash_image": "/assets/pluto_theme/images/logo-neural.png",
+}
 
 # Home page (leave commented to keep Frappe default)
 # home_page = "login"

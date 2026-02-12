@@ -7,7 +7,7 @@ def get_data():
             "module_name": "Pluto Theme",
             "type": "module",
             "label": _("Pluto Theme"),
-            "color": "#6C5CE7",
+            "color": "#0000ff",
             "icon": "octicon octicon-paintbrush",
             "description": "Custom theme and styling for Frappe / ERPNext.",
         }

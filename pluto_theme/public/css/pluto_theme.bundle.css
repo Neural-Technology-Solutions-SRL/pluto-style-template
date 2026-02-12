@@ -67,7 +67,7 @@
 
 	--pluto-font-size-xs:      0.6875rem;   /* 11px */
 	--pluto-font-size-sm:      0.75rem;     /* 12px */
-	--pluto-font-size-base:    0.875rem;    /* 14px — increased for readability */
+	--pluto-font-size-base:    0.8125rem;   /* 13px — Frappe default */
 	--pluto-font-size-md:      0.875rem;    /* 14px */
 	--pluto-font-size-lg:      1rem;        /* 16px */
 	--pluto-font-size-xl:      1.25rem;     /* 20px */
@@ -293,7 +293,7 @@ small, .small {
 .pluto-focus-ring:focus,
 .pluto-focus-ring:focus-visible {
 	outline: none;
-	box-shadow: 0 0 0 2px var(--pluto-white), 0 0 0 4px var(--pluto-primary);
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg);
 }
 
 /* Smooth transitions on all interactive elements */
@@ -371,8 +371,8 @@ textarea,
 
 .navbar .search-bar:focus-within,
 .navbar #navbar-search:focus {
-	border-color: var(--pluto-primary);
-	box-shadow: 0 0 0 2px var(--pluto-white), 0 0 0 4px var(--pluto-primary);
+	border-color: var(--pluto-primary-light);
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg);
 	background: var(--pluto-white);
 }
 
@@ -507,7 +507,7 @@ footer a:hover {
 	font-size: var(--pluto-font-size-sm);
 	font-weight: var(--pluto-font-weight-medium);
 	border-radius: var(--pluto-radius);
-	padding: var(--pluto-space-2) var(--pluto-space-4);
+	padding: var(--pluto-space-1) var(--pluto-space-3);
 	transition: all var(--pluto-transition-fast);
 	border: 1px solid transparent;
 	line-height: 1.5;
@@ -515,7 +515,7 @@ footer a:hover {
 
 .btn:focus,
 .btn:focus-visible {
-	box-shadow: 0 0 0 2px var(--pluto-white), 0 0 0 4px var(--pluto-primary);
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg);
 	outline: none;
 }
 
@@ -597,7 +597,7 @@ footer a:hover {
 .btn-xs,
 .btn-sm {
 	font-size: var(--pluto-font-size-xs);
-	padding: var(--pluto-space-1) var(--pluto-space-2);
+	padding: 2px var(--pluto-space-2);
 	border-radius: var(--pluto-radius-sm);
 }
 
@@ -631,7 +631,7 @@ footer a:hover {
 .shortcut-widget-box {
 	background: var(--pluto-white);
 	border: 1px solid var(--pluto-gray-200);
-	border-radius: var(--pluto-radius-lg);
+	border-radius: var(--pluto-radius-md);
 	box-shadow: var(--pluto-shadow-xs);
 	transition: box-shadow var(--pluto-transition), border-color var(--pluto-transition);
 }
@@ -704,7 +704,7 @@ footer a:hover {
 	border-radius: var(--pluto-radius);
 	background: var(--pluto-white);
 	color: var(--pluto-gray-900);
-	padding: var(--pluto-space-2) var(--pluto-space-3);
+	padding: var(--pluto-space-1) var(--pluto-space-3);
 	transition: border-color var(--pluto-transition-fast),
 	            box-shadow var(--pluto-transition-fast);
 }
@@ -715,7 +715,7 @@ footer a:hover {
 .frappe-control select:focus,
 .frappe-control textarea:focus {
 	border-color: var(--pluto-primary) !important;
-	box-shadow: 0 0 0 2px var(--pluto-white), 0 0 0 4px var(--pluto-primary) !important;
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg) !important;
 	outline: none;
 }
 
@@ -731,11 +731,11 @@ footer a:hover {
 /* Labels */
 .frappe-control .control-label,
 .form-group label {
-	font-size: var(--pluto-font-size-sm);
-	font-weight: var(--pluto-font-weight-medium);
+	font-size: var(--pluto-font-size-xs);
+	font-weight: var(--pluto-font-weight-semi);
 	color: var(--pluto-gray-600);
-	text-transform: none;
-	letter-spacing: normal;
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
 	margin-bottom: var(--pluto-space-1);
 }
 
@@ -782,7 +782,7 @@ footer a:hover {
 
 .comment-box .ql-editor:focus {
 	border-color: var(--pluto-primary);
-	box-shadow: 0 0 0 2px var(--pluto-white), 0 0 0 4px var(--pluto-primary);
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg);
 }
 
 /* Link field */
@@ -1148,7 +1148,7 @@ body.frappe-login-page,
 
 .page-card .form-group input:focus {
 	border-color: var(--pluto-primary) !important;
-	box-shadow: 0 0 0 2px var(--pluto-white), 0 0 0 4px var(--pluto-primary) !important;
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg) !important;
 }
 
 /* Login button */

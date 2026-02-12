@@ -1,39 +1,1385 @@
 /* =========================================================================
    Pluto Theme — Main Bundle
    =========================================================================
-   This file is the single entry point picked up by Frappe's build system.
-   It imports every partial in the correct order.
-
-   Order matters:
-   1. Variables / tokens   — defines all custom properties
-   2. Utilities             — base typography, spacing, scrollbars
-   3. Layout                — navbar, sidebar, footer
-   4. Components            — buttons, cards, forms, modals, etc.
-   5. Pages                 — login, desk, print
+   All partials are inlined here because Frappe's esbuild pipeline copies
+   the bundle to a temp directory, which breaks relative @import paths.
    ========================================================================= */
 
-/* 1. Design tokens */
-@import "./variables.css";
 
-/* 2. Utilities */
-@import "./utilities/typography.css";
-@import "./utilities/spacing.css";
+/* =========================================================================
+   1. Design Tokens (CSS Custom Properties)
+   ========================================================================= */
 
-/* 3. Layout */
-@import "./layout/navbar.css";
-@import "./layout/sidebar.css";
-@import "./layout/footer.css";
+:root {
+	/* -----------------------------------------------------------------
+	   Brand colours
+	   ----------------------------------------------------------------- */
+	--pluto-primary:           #6C5CE7;
+	--pluto-primary-light:     #A29BFE;
+	--pluto-primary-dark:      #4A3FCF;
+	--pluto-primary-bg:        #F0EEFF;
 
-/* 4. Components */
-@import "./components/buttons.css";
-@import "./components/cards.css";
-@import "./components/forms.css";
-@import "./components/modals.css";
-@import "./components/lists.css";
-@import "./components/indicators.css";
-@import "./components/dropdowns.css";
+	--pluto-secondary:         #00CEC9;
+	--pluto-secondary-light:   #81ECEC;
+	--pluto-secondary-dark:    #00A8A3;
 
-/* 5. Pages */
-@import "./pages/login.css";
-@import "./pages/desk.css";
-@import "./pages/print.css";
+	--pluto-accent:            #FD79A8;
+	--pluto-accent-light:      #FFB8D0;
+	--pluto-accent-dark:       #E84393;
+
+	/* -----------------------------------------------------------------
+	   Neutral palette
+	   ----------------------------------------------------------------- */
+	--pluto-white:             #FFFFFF;
+	--pluto-gray-50:           #FAFBFC;
+	--pluto-gray-100:          #F4F5F7;
+	--pluto-gray-200:          #EBECF0;
+	--pluto-gray-300:          #DFE1E6;
+	--pluto-gray-400:          #C1C7D0;
+	--pluto-gray-500:          #A5ADBA;
+	--pluto-gray-600:          #6B778C;
+	--pluto-gray-700:          #505F79;
+	--pluto-gray-800:          #344563;
+	--pluto-gray-900:          #172B4D;
+	--pluto-black:             #091E42;
+
+	/* -----------------------------------------------------------------
+	   Semantic / feedback colours
+	   ----------------------------------------------------------------- */
+	--pluto-success:           #00B894;
+	--pluto-success-light:     #D4EFDF;
+	--pluto-warning:           #FDCB6E;
+	--pluto-warning-light:     #FEF3D5;
+	--pluto-danger:            #D63031;
+	--pluto-danger-light:      #FADBD8;
+	--pluto-info:              #0984E3;
+	--pluto-info-light:        #D6EAF8;
+
+	/* -----------------------------------------------------------------
+	   Typography
+	   ----------------------------------------------------------------- */
+	--pluto-font-family:       -apple-system, BlinkMacSystemFont, "Inter",
+	                           "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+	                           "Helvetica Neue", Arial, sans-serif;
+	--pluto-font-family-mono:  "JetBrains Mono", "Fira Code", "SF Mono",
+	                           SFMono-Regular, Consolas, "Liberation Mono",
+	                           Menlo, monospace;
+
+	--pluto-font-size-xs:      0.6875rem;   /* 11px */
+	--pluto-font-size-sm:      0.75rem;     /* 12px */
+	--pluto-font-size-base:    0.8125rem;   /* 13px — Frappe default */
+	--pluto-font-size-md:      0.875rem;    /* 14px */
+	--pluto-font-size-lg:      1rem;        /* 16px */
+	--pluto-font-size-xl:      1.25rem;     /* 20px */
+	--pluto-font-size-2xl:     1.5rem;      /* 24px */
+	--pluto-font-size-3xl:     1.875rem;    /* 30px */
+
+	--pluto-font-weight-normal:  400;
+	--pluto-font-weight-medium:  500;
+	--pluto-font-weight-semi:    600;
+	--pluto-font-weight-bold:    700;
+
+	--pluto-line-height:       1.5;
+	--pluto-line-height-tight: 1.25;
+
+	/* -----------------------------------------------------------------
+	   Spacing scale
+	   ----------------------------------------------------------------- */
+	--pluto-space-0:   0;
+	--pluto-space-1:   0.25rem;   /* 4px  */
+	--pluto-space-2:   0.5rem;    /* 8px  */
+	--pluto-space-3:   0.75rem;   /* 12px */
+	--pluto-space-4:   1rem;      /* 16px */
+	--pluto-space-5:   1.5rem;    /* 24px */
+	--pluto-space-6:   2rem;      /* 32px */
+	--pluto-space-8:   3rem;      /* 48px */
+	--pluto-space-10:  4rem;      /* 64px */
+
+	/* -----------------------------------------------------------------
+	   Border radius
+	   ----------------------------------------------------------------- */
+	--pluto-radius-sm:    0.25rem;   /* 4px  */
+	--pluto-radius:       0.5rem;    /* 8px  */
+	--pluto-radius-md:    0.625rem;  /* 10px */
+	--pluto-radius-lg:    0.75rem;   /* 12px */
+	--pluto-radius-xl:    1rem;      /* 16px */
+	--pluto-radius-full:  9999px;
+
+	/* -----------------------------------------------------------------
+	   Shadows
+	   ----------------------------------------------------------------- */
+	--pluto-shadow-xs:    0 1px 2px rgba(9,30,66,0.06);
+	--pluto-shadow-sm:    0 1px 3px rgba(9,30,66,0.08),
+	                      0 1px 2px rgba(9,30,66,0.06);
+	--pluto-shadow:       0 4px 6px rgba(9,30,66,0.07),
+	                      0 2px 4px rgba(9,30,66,0.06);
+	--pluto-shadow-md:    0 6px 12px rgba(9,30,66,0.08),
+	                      0 3px 6px rgba(9,30,66,0.06);
+	--pluto-shadow-lg:    0 10px 20px rgba(9,30,66,0.10),
+	                      0 6px 6px rgba(9,30,66,0.06);
+	--pluto-shadow-xl:    0 20px 40px rgba(9,30,66,0.12);
+
+	/* -----------------------------------------------------------------
+	   Transitions
+	   ----------------------------------------------------------------- */
+	--pluto-transition-fast:   150ms ease;
+	--pluto-transition:        250ms ease;
+	--pluto-transition-slow:   400ms ease;
+
+	/* -----------------------------------------------------------------
+	   Z-index layers
+	   ----------------------------------------------------------------- */
+	--pluto-z-dropdown:  1000;
+	--pluto-z-sticky:    1020;
+	--pluto-z-navbar:    1030;
+	--pluto-z-sidebar:   1035;
+	--pluto-z-modal:     1050;
+	--pluto-z-popover:   1060;
+	--pluto-z-tooltip:   1070;
+	--pluto-z-toast:     1080;
+
+	/* -----------------------------------------------------------------
+	   Layout
+	   ----------------------------------------------------------------- */
+	--pluto-navbar-height:      50px;
+	--pluto-sidebar-width:      240px;
+	--pluto-sidebar-collapsed:  56px;
+	--pluto-page-max-width:     1400px;
+	--pluto-page-padding:       var(--pluto-space-5);
+}
+
+/* Dark mode overrides — activate with [data-theme="dark"] on <html> */
+[data-theme="dark"] {
+	--pluto-white:       #1A1A2E;
+	--pluto-gray-50:     #1E1E32;
+	--pluto-gray-100:    #25253D;
+	--pluto-gray-200:    #2D2D48;
+	--pluto-gray-300:    #3A3A55;
+	--pluto-gray-400:    #505068;
+	--pluto-gray-500:    #7C7C94;
+	--pluto-gray-600:    #A0A0B4;
+	--pluto-gray-700:    #C4C4D4;
+	--pluto-gray-800:    #DDDDE8;
+	--pluto-gray-900:    #EEEEFC;
+	--pluto-black:       #F4F4FF;
+
+	--pluto-primary-bg:      rgba(108,92,231,0.15);
+	--pluto-success-light:   rgba(0,184,148,0.15);
+	--pluto-warning-light:   rgba(253,203,110,0.15);
+	--pluto-danger-light:    rgba(214,48,49,0.15);
+	--pluto-info-light:      rgba(9,132,227,0.15);
+
+	--pluto-shadow-xs:   0 1px 2px rgba(0,0,0,0.20);
+	--pluto-shadow-sm:   0 1px 3px rgba(0,0,0,0.24),
+	                     0 1px 2px rgba(0,0,0,0.20);
+	--pluto-shadow:      0 4px 6px rgba(0,0,0,0.22),
+	                     0 2px 4px rgba(0,0,0,0.18);
+	--pluto-shadow-md:   0 6px 12px rgba(0,0,0,0.24),
+	                     0 3px 6px rgba(0,0,0,0.18);
+	--pluto-shadow-lg:   0 10px 20px rgba(0,0,0,0.28),
+	                     0 6px 6px rgba(0,0,0,0.18);
+}
+
+
+/* =========================================================================
+   2. Utilities — Typography
+   ========================================================================= */
+
+body {
+	font-family: var(--pluto-font-family);
+	font-size: var(--pluto-font-size-base);
+	line-height: var(--pluto-line-height);
+	color: var(--pluto-gray-900);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: var(--pluto-font-family);
+	font-weight: var(--pluto-font-weight-semi);
+	color: var(--pluto-gray-900);
+	line-height: var(--pluto-line-height-tight);
+}
+
+h1, .h1 { font-size: var(--pluto-font-size-3xl); }
+h2, .h2 { font-size: var(--pluto-font-size-2xl); }
+h3, .h3 { font-size: var(--pluto-font-size-xl); }
+h4, .h4 { font-size: var(--pluto-font-size-lg); }
+h5, .h5 { font-size: var(--pluto-font-size-md); }
+h6, .h6 { font-size: var(--pluto-font-size-sm); font-weight: var(--pluto-font-weight-bold); }
+
+/* Links */
+a {
+	color: var(--pluto-primary);
+	transition: color var(--pluto-transition-fast);
+}
+
+a:hover {
+	color: var(--pluto-primary-dark);
+}
+
+/* Code */
+code, pre, kbd, samp {
+	font-family: var(--pluto-font-family-mono);
+}
+
+code {
+	font-size: 0.9em;
+	background: var(--pluto-gray-100);
+	color: var(--pluto-accent-dark);
+	padding: 1px 4px;
+	border-radius: var(--pluto-radius-sm);
+}
+
+pre {
+	background: var(--pluto-gray-900);
+	color: var(--pluto-gray-100);
+	border-radius: var(--pluto-radius);
+	padding: var(--pluto-space-3);
+	font-size: var(--pluto-font-size-sm);
+	overflow-x: auto;
+}
+
+pre code {
+	background: none;
+	color: inherit;
+	padding: 0;
+}
+
+/* Muted / secondary text */
+.text-muted,
+.text-secondary {
+	color: var(--pluto-gray-500) !important;
+}
+
+/* Small text */
+small, .small {
+	font-size: var(--pluto-font-size-xs);
+}
+
+/* Text selection */
+::selection {
+	background: var(--pluto-primary-light);
+	color: var(--pluto-gray-900);
+}
+
+
+/* =========================================================================
+   2. Utilities — Spacing & Layout
+   ========================================================================= */
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--pluto-gray-300);
+	border-radius: var(--pluto-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--pluto-gray-400);
+}
+
+/* Focus ring utility */
+.pluto-focus-ring:focus,
+.pluto-focus-ring:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg);
+}
+
+/* Smooth transitions on all interactive elements */
+a,
+button,
+input,
+select,
+textarea,
+.btn,
+.nav-link {
+	transition: color var(--pluto-transition-fast),
+	            background var(--pluto-transition-fast),
+	            border-color var(--pluto-transition-fast),
+	            box-shadow var(--pluto-transition-fast);
+}
+
+/* Frappe container width override */
+.container {
+	max-width: var(--pluto-page-max-width);
+}
+
+
+/* =========================================================================
+   3. Layout — Navbar
+   ========================================================================= */
+
+.navbar {
+	height: var(--pluto-navbar-height);
+	background: var(--pluto-white) !important;
+	border-bottom: 1px solid var(--pluto-gray-200);
+	box-shadow: var(--pluto-shadow-xs);
+	transition: background var(--pluto-transition), box-shadow var(--pluto-transition);
+}
+
+.navbar .container {
+	max-width: 100%;
+}
+
+/* Brand / logo */
+.navbar-brand {
+	font-weight: var(--pluto-font-weight-semi);
+	color: var(--pluto-gray-900) !important;
+}
+
+.navbar-brand img {
+	max-height: 28px;
+}
+
+/* Nav links */
+.navbar .nav-link,
+.navbar .navbar-nav > li > a {
+	color: var(--pluto-gray-700) !important;
+	font-size: var(--pluto-font-size-sm);
+	font-weight: var(--pluto-font-weight-medium);
+	transition: color var(--pluto-transition-fast);
+	border-radius: var(--pluto-radius-sm);
+	padding: var(--pluto-space-1) var(--pluto-space-2) !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .navbar-nav > li > a:hover {
+	color: var(--pluto-primary) !important;
+	background: var(--pluto-primary-bg);
+}
+
+/* Search bar in navbar */
+.navbar .search-bar,
+.navbar #navbar-search {
+	border-radius: var(--pluto-radius);
+	border: 1px solid var(--pluto-gray-300);
+	background: var(--pluto-gray-50);
+	transition: border-color var(--pluto-transition-fast),
+	            box-shadow var(--pluto-transition-fast);
+}
+
+.navbar .search-bar:focus-within,
+.navbar #navbar-search:focus {
+	border-color: var(--pluto-primary-light);
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg);
+	background: var(--pluto-white);
+}
+
+/* Notifications bell / avatar */
+.navbar .navbar-right .dropdown-toggle {
+	color: var(--pluto-gray-600) !important;
+	transition: color var(--pluto-transition-fast);
+}
+
+.navbar .navbar-right .dropdown-toggle:hover {
+	color: var(--pluto-primary) !important;
+}
+
+/* Awesomebar */
+#navbar-search,
+.awesomebar-input {
+	font-size: var(--pluto-font-size-sm);
+}
+
+
+/* =========================================================================
+   3. Layout — Sidebar
+   ========================================================================= */
+
+.frappe-control[data-fieldtype="Section Break"],
+.layout-side-section,
+.desk-sidebar {
+	/* Intentionally blank — add overrides below */
+}
+
+/* Desk sidebar (left navigation) */
+.desk-sidebar {
+	background: var(--pluto-gray-50);
+	border-right: 1px solid var(--pluto-gray-200);
+	width: var(--pluto-sidebar-width);
+	transition: width var(--pluto-transition);
+}
+
+.desk-sidebar .sidebar-menu {
+	padding: var(--pluto-space-2) 0;
+}
+
+.desk-sidebar .sidebar-menu a,
+.desk-sidebar .sidebar-menu .sidebar-label {
+	color: var(--pluto-gray-700);
+	font-size: var(--pluto-font-size-sm);
+	font-weight: var(--pluto-font-weight-medium);
+	padding: var(--pluto-space-2) var(--pluto-space-4);
+	border-radius: var(--pluto-radius-sm);
+	margin: 1px var(--pluto-space-2);
+	transition: background var(--pluto-transition-fast),
+	            color var(--pluto-transition-fast);
+}
+
+.desk-sidebar .sidebar-menu a:hover,
+.desk-sidebar .sidebar-menu .sidebar-label:hover {
+	background: var(--pluto-primary-bg);
+	color: var(--pluto-primary);
+}
+
+.desk-sidebar .sidebar-menu a.active,
+.desk-sidebar .sidebar-menu a.selected {
+	background: var(--pluto-primary-bg);
+	color: var(--pluto-primary);
+	font-weight: var(--pluto-font-weight-semi);
+}
+
+/* Sidebar icons */
+.desk-sidebar .sidebar-menu .sidebar-icon {
+	color: var(--pluto-gray-500);
+	margin-right: var(--pluto-space-2);
+	transition: color var(--pluto-transition-fast);
+}
+
+.desk-sidebar .sidebar-menu a:hover .sidebar-icon,
+.desk-sidebar .sidebar-menu a.active .sidebar-icon {
+	color: var(--pluto-primary);
+}
+
+/* Page sidebar (right panel on forms) */
+.layout-side-section {
+	background: var(--pluto-gray-50);
+	border-left: 1px solid var(--pluto-gray-200);
+	padding: var(--pluto-space-4);
+}
+
+.layout-side-section .sidebar-label {
+	font-size: var(--pluto-font-size-xs);
+	font-weight: var(--pluto-font-weight-semi);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--pluto-gray-500);
+	margin-bottom: var(--pluto-space-2);
+}
+
+
+/* =========================================================================
+   3. Layout — Footer
+   ========================================================================= */
+
+.web-footer,
+footer {
+	background: var(--pluto-gray-50);
+	border-top: 1px solid var(--pluto-gray-200);
+	color: var(--pluto-gray-600);
+	font-size: var(--pluto-font-size-sm);
+	padding: var(--pluto-space-5) 0;
+}
+
+footer a {
+	color: var(--pluto-gray-700);
+	transition: color var(--pluto-transition-fast);
+}
+
+footer a:hover {
+	color: var(--pluto-primary);
+}
+
+/* "Powered by" badge in Frappe */
+.footer-powered {
+	font-size: var(--pluto-font-size-xs);
+	color: var(--pluto-gray-400);
+}
+
+
+/* =========================================================================
+   4. Components — Buttons
+   ========================================================================= */
+
+.btn {
+	font-family: var(--pluto-font-family);
+	font-size: var(--pluto-font-size-sm);
+	font-weight: var(--pluto-font-weight-medium);
+	border-radius: var(--pluto-radius);
+	padding: var(--pluto-space-1) var(--pluto-space-3);
+	transition: all var(--pluto-transition-fast);
+	border: 1px solid transparent;
+	line-height: 1.5;
+}
+
+.btn:focus,
+.btn:focus-visible {
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg);
+	outline: none;
+}
+
+/* Primary button */
+.btn-primary,
+.btn-primary-dark {
+	background: var(--pluto-primary) !important;
+	border-color: var(--pluto-primary) !important;
+	color: var(--pluto-white) !important;
+}
+
+.btn-primary:hover,
+.btn-primary-dark:hover {
+	background: var(--pluto-primary-dark) !important;
+	border-color: var(--pluto-primary-dark) !important;
+	box-shadow: var(--pluto-shadow-sm);
+}
+
+.btn-primary:active,
+.btn-primary-dark:active {
+	background: var(--pluto-primary-dark) !important;
+	transform: translateY(0);
+}
+
+/* Secondary / default button */
+.btn-default,
+.btn-secondary {
+	background: var(--pluto-white) !important;
+	border-color: var(--pluto-gray-300) !important;
+	color: var(--pluto-gray-800) !important;
+}
+
+.btn-default:hover,
+.btn-secondary:hover {
+	background: var(--pluto-gray-50) !important;
+	border-color: var(--pluto-gray-400) !important;
+	box-shadow: var(--pluto-shadow-xs);
+}
+
+/* Success */
+.btn-success {
+	background: var(--pluto-success) !important;
+	border-color: var(--pluto-success) !important;
+	color: var(--pluto-white) !important;
+}
+
+.btn-success:hover {
+	filter: brightness(0.95);
+	box-shadow: var(--pluto-shadow-sm);
+}
+
+/* Danger */
+.btn-danger {
+	background: var(--pluto-danger) !important;
+	border-color: var(--pluto-danger) !important;
+	color: var(--pluto-white) !important;
+}
+
+.btn-danger:hover {
+	filter: brightness(0.95);
+	box-shadow: var(--pluto-shadow-sm);
+}
+
+/* Warning */
+.btn-warning {
+	background: var(--pluto-warning) !important;
+	border-color: var(--pluto-warning) !important;
+	color: var(--pluto-gray-900) !important;
+}
+
+/* Info */
+.btn-info {
+	background: var(--pluto-info) !important;
+	border-color: var(--pluto-info) !important;
+	color: var(--pluto-white) !important;
+}
+
+/* Small buttons */
+.btn-xs,
+.btn-sm {
+	font-size: var(--pluto-font-size-xs);
+	padding: 2px var(--pluto-space-2);
+	border-radius: var(--pluto-radius-sm);
+}
+
+/* Icon-only buttons */
+.btn-icon {
+	padding: var(--pluto-space-1);
+	line-height: 1;
+}
+
+/* Like button (Frappe-specific) */
+.like-active-item .like-action {
+	color: var(--pluto-danger) !important;
+}
+
+/* Frappe page primary action */
+.page-actions .btn-primary-dark,
+.page-actions .primary-action {
+	background: var(--pluto-primary) !important;
+	border-color: var(--pluto-primary) !important;
+}
+
+
+/* =========================================================================
+   4. Components — Cards & Panels
+   ========================================================================= */
+
+.frappe-card,
+.widget.widget-shadow,
+.form-dashboard,
+.number-widget-box,
+.shortcut-widget-box {
+	background: var(--pluto-white);
+	border: 1px solid var(--pluto-gray-200);
+	border-radius: var(--pluto-radius-md);
+	box-shadow: var(--pluto-shadow-xs);
+	transition: box-shadow var(--pluto-transition), border-color var(--pluto-transition);
+}
+
+.frappe-card:hover,
+.widget.widget-shadow:hover {
+	box-shadow: var(--pluto-shadow-sm);
+	border-color: var(--pluto-gray-300);
+}
+
+/* Widget title */
+.widget .widget-head .widget-title {
+	font-size: var(--pluto-font-size-md);
+	font-weight: var(--pluto-font-weight-semi);
+	color: var(--pluto-gray-900);
+}
+
+/* Dashboard number cards */
+.number-widget-box .widget-head .number {
+	font-size: var(--pluto-font-size-2xl);
+	font-weight: var(--pluto-font-weight-bold);
+	color: var(--pluto-gray-900);
+}
+
+/* Shortcut widgets */
+.shortcut-widget-box {
+	padding: var(--pluto-space-3) var(--pluto-space-4);
+	border-radius: var(--pluto-radius);
+}
+
+.shortcut-widget-box:hover {
+	background: var(--pluto-primary-bg);
+	border-color: var(--pluto-primary-light);
+}
+
+/* New card / chart area */
+.chart-container {
+	background: var(--pluto-white);
+	border: 1px solid var(--pluto-gray-200);
+	border-radius: var(--pluto-radius-md);
+	padding: var(--pluto-space-4);
+}
+
+/* Section head in workspace cards */
+.section-head {
+	font-size: var(--pluto-font-size-md);
+	font-weight: var(--pluto-font-weight-semi);
+	color: var(--pluto-gray-800);
+}
+
+
+/* =========================================================================
+   4. Components — Forms & Inputs
+   ========================================================================= */
+
+/* Text inputs, selects, textareas */
+.form-control,
+.input-with-feedback,
+.frappe-control input[type="text"],
+.frappe-control input[type="password"],
+.frappe-control input[type="email"],
+.frappe-control input[type="number"],
+.frappe-control input[type="date"],
+.frappe-control input[type="url"],
+.frappe-control select,
+.frappe-control textarea {
+	font-family: var(--pluto-font-family);
+	font-size: var(--pluto-font-size-sm);
+	border: 1px solid var(--pluto-gray-300);
+	border-radius: var(--pluto-radius);
+	background: var(--pluto-white);
+	color: var(--pluto-gray-900);
+	padding: var(--pluto-space-1) var(--pluto-space-3);
+	transition: border-color var(--pluto-transition-fast),
+	            box-shadow var(--pluto-transition-fast);
+}
+
+.form-control:focus,
+.input-with-feedback:focus,
+.frappe-control input:focus,
+.frappe-control select:focus,
+.frappe-control textarea:focus {
+	border-color: var(--pluto-primary) !important;
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg) !important;
+	outline: none;
+}
+
+/* Read-only / disabled */
+.form-control[disabled],
+.form-control[readonly],
+.form-group .control-value {
+	background: var(--pluto-gray-50);
+	color: var(--pluto-gray-600);
+	border-color: var(--pluto-gray-200);
+}
+
+/* Labels */
+.frappe-control .control-label,
+.form-group label {
+	font-size: var(--pluto-font-size-xs);
+	font-weight: var(--pluto-font-weight-semi);
+	color: var(--pluto-gray-600);
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+	margin-bottom: var(--pluto-space-1);
+}
+
+/* Section breaks */
+.section-head,
+.form-section .section-head {
+	border-bottom: 1px solid var(--pluto-gray-200);
+	padding-bottom: var(--pluto-space-2);
+	margin-bottom: var(--pluto-space-3);
+}
+
+.form-section .section-body {
+	padding: var(--pluto-space-3) 0;
+}
+
+/* Column breaks — add gutters */
+.form-column {
+	padding-right: var(--pluto-space-4);
+}
+
+/* Mandatory indicator */
+.has-error .form-control,
+.has-error .input-with-feedback {
+	border-color: var(--pluto-danger) !important;
+}
+
+.reqd .control-label::after {
+	color: var(--pluto-danger);
+}
+
+/* Form layout card */
+.form-layout {
+	background: var(--pluto-white);
+	border-radius: var(--pluto-radius-md);
+}
+
+/* Comment / activity section */
+.comment-box .ql-editor,
+.comment-input-control .ql-editor {
+	border-radius: var(--pluto-radius);
+	border: 1px solid var(--pluto-gray-300);
+	min-height: 80px;
+}
+
+.comment-box .ql-editor:focus {
+	border-color: var(--pluto-primary);
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg);
+}
+
+/* Link field */
+.frappe-control[data-fieldtype="Link"] .link-btn {
+	color: var(--pluto-primary);
+}
+
+/* Check / toggle */
+.frappe-control[data-fieldtype="Check"] .checkbox .label-area {
+	font-size: var(--pluto-font-size-sm);
+	color: var(--pluto-gray-700);
+}
+
+
+/* =========================================================================
+   4. Components — Modals & Dialogs
+   ========================================================================= */
+
+.modal-content {
+	border: none;
+	border-radius: var(--pluto-radius-lg);
+	box-shadow: var(--pluto-shadow-xl);
+	overflow: hidden;
+}
+
+.modal-header {
+	background: var(--pluto-white);
+	border-bottom: 1px solid var(--pluto-gray-200);
+	padding: var(--pluto-space-4) var(--pluto-space-5);
+}
+
+.modal-header .modal-title {
+	font-size: var(--pluto-font-size-lg);
+	font-weight: var(--pluto-font-weight-semi);
+	color: var(--pluto-gray-900);
+}
+
+.modal-header .close,
+.modal-header .btn-close {
+	color: var(--pluto-gray-500);
+	opacity: 0.7;
+	transition: opacity var(--pluto-transition-fast);
+}
+
+.modal-header .close:hover,
+.modal-header .btn-close:hover {
+	opacity: 1;
+	color: var(--pluto-gray-900);
+}
+
+.modal-body {
+	padding: var(--pluto-space-5);
+	color: var(--pluto-gray-800);
+}
+
+.modal-footer {
+	background: var(--pluto-gray-50);
+	border-top: 1px solid var(--pluto-gray-200);
+	padding: var(--pluto-space-3) var(--pluto-space-5);
+}
+
+/* Backdrop */
+.modal-backdrop {
+	background: var(--pluto-black);
+}
+
+.modal-backdrop.show {
+	opacity: 0.5;
+}
+
+/* Frappe dialog */
+.frappe-dialog .modal-dialog {
+	border-radius: var(--pluto-radius-lg);
+}
+
+/* Message dialog */
+.msgprint-dialog .modal-body {
+	font-size: var(--pluto-font-size-md);
+}
+
+
+/* =========================================================================
+   4. Components — List View & Report View
+   ========================================================================= */
+
+/* List view container */
+.frappe-list {
+	background: var(--pluto-white);
+	border-radius: var(--pluto-radius-md);
+}
+
+/* List header row */
+.list-row-head {
+	background: var(--pluto-gray-50);
+	border-bottom: 2px solid var(--pluto-gray-200);
+}
+
+.list-row-head .list-row-col {
+	font-size: var(--pluto-font-size-xs);
+	font-weight: var(--pluto-font-weight-semi);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--pluto-gray-600);
+}
+
+/* List rows */
+.list-row {
+	border-bottom: 1px solid var(--pluto-gray-100);
+	transition: background var(--pluto-transition-fast);
+}
+
+.list-row:hover {
+	background: var(--pluto-gray-50);
+}
+
+.list-row .list-row-col {
+	font-size: var(--pluto-font-size-sm);
+	color: var(--pluto-gray-800);
+}
+
+/* Subject / title link in list */
+.list-row .level-left .list-row--col .ellipsis,
+.list-row .list-row-col.ellipsis a {
+	color: var(--pluto-gray-900);
+	font-weight: var(--pluto-font-weight-medium);
+	transition: color var(--pluto-transition-fast);
+}
+
+.list-row .level-left .list-row--col .ellipsis:hover,
+.list-row .list-row-col.ellipsis a:hover {
+	color: var(--pluto-primary);
+}
+
+/* List row checkbox */
+.list-row .list-row-checkbox {
+	accent-color: var(--pluto-primary);
+}
+
+/* Selected row */
+.list-row.selected {
+	background: var(--pluto-primary-bg) !important;
+}
+
+/* Pagination */
+.list-paging-area {
+	border-top: 1px solid var(--pluto-gray-200);
+	padding: var(--pluto-space-2) var(--pluto-space-4);
+}
+
+.list-paging-area .btn-paging {
+	font-size: var(--pluto-font-size-xs);
+}
+
+/* Filters area */
+.filter-section {
+	padding: var(--pluto-space-2) var(--pluto-space-4);
+	border-bottom: 1px solid var(--pluto-gray-100);
+}
+
+/* Report view */
+.report-wrapper .datatable .dt-header .dt-cell--header {
+	background: var(--pluto-gray-50);
+	font-weight: var(--pluto-font-weight-semi);
+	font-size: var(--pluto-font-size-xs);
+	text-transform: uppercase;
+}
+
+.report-wrapper .datatable .dt-cell {
+	font-size: var(--pluto-font-size-sm);
+	border-color: var(--pluto-gray-100);
+}
+
+/* Empty state */
+.frappe-list .no-result {
+	color: var(--pluto-gray-500);
+	font-size: var(--pluto-font-size-md);
+	padding: var(--pluto-space-8) var(--pluto-space-4);
+}
+
+
+/* =========================================================================
+   4. Components — Status Indicators, Badges & Tags
+   ========================================================================= */
+
+/* Indicator dots */
+.indicator-pill {
+	font-size: var(--pluto-font-size-xs);
+	font-weight: var(--pluto-font-weight-medium);
+	border-radius: var(--pluto-radius-full);
+	padding: 2px var(--pluto-space-2);
+}
+
+.indicator-pill.green,
+.indicator-pill[data-indicator="green"] {
+	background: var(--pluto-success-light);
+	color: var(--pluto-success);
+}
+
+.indicator-pill.red,
+.indicator-pill[data-indicator="red"] {
+	background: var(--pluto-danger-light);
+	color: var(--pluto-danger);
+}
+
+.indicator-pill.orange,
+.indicator-pill[data-indicator="orange"] {
+	background: var(--pluto-warning-light);
+	color: #E17D24;
+}
+
+.indicator-pill.yellow,
+.indicator-pill[data-indicator="yellow"] {
+	background: var(--pluto-warning-light);
+	color: #B8860B;
+}
+
+.indicator-pill.blue,
+.indicator-pill[data-indicator="blue"] {
+	background: var(--pluto-info-light);
+	color: var(--pluto-info);
+}
+
+.indicator-pill.purple,
+.indicator-pill[data-indicator="purple"] {
+	background: var(--pluto-primary-bg);
+	color: var(--pluto-primary);
+}
+
+.indicator-pill.gray,
+.indicator-pill.grey,
+.indicator-pill[data-indicator="gray"],
+.indicator-pill[data-indicator="grey"] {
+	background: var(--pluto-gray-100);
+	color: var(--pluto-gray-600);
+}
+
+/* Tag pills */
+.tag-pill,
+.tags .tag-pill {
+	background: var(--pluto-gray-100);
+	color: var(--pluto-gray-700);
+	border-radius: var(--pluto-radius-full);
+	font-size: var(--pluto-font-size-xs);
+	padding: 1px var(--pluto-space-2);
+	transition: background var(--pluto-transition-fast);
+}
+
+.tag-pill:hover {
+	background: var(--pluto-primary-bg);
+	color: var(--pluto-primary);
+}
+
+/* Badge count */
+.badge,
+.badge-pill {
+	font-size: var(--pluto-font-size-xs);
+	font-weight: var(--pluto-font-weight-semi);
+	border-radius: var(--pluto-radius-full);
+	padding: 2px 6px;
+}
+
+
+/* =========================================================================
+   4. Components — Dropdowns & Menus
+   ========================================================================= */
+
+.dropdown-menu {
+	border: 1px solid var(--pluto-gray-200);
+	border-radius: var(--pluto-radius-md);
+	box-shadow: var(--pluto-shadow-md);
+	padding: var(--pluto-space-1) 0;
+	background: var(--pluto-white);
+	animation: pluto-dropdown-in 150ms ease;
+}
+
+@keyframes pluto-dropdown-in {
+	from {
+		opacity: 0;
+		transform: translateY(-4px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.dropdown-menu .dropdown-item,
+.dropdown-menu > li > a {
+	font-size: var(--pluto-font-size-sm);
+	color: var(--pluto-gray-800);
+	padding: var(--pluto-space-2) var(--pluto-space-4);
+	transition: background var(--pluto-transition-fast),
+	            color var(--pluto-transition-fast);
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu > li > a:hover {
+	background: var(--pluto-primary-bg);
+	color: var(--pluto-primary);
+}
+
+.dropdown-menu .dropdown-item:active,
+.dropdown-menu > li > a:active {
+	background: var(--pluto-primary);
+	color: var(--pluto-white);
+}
+
+.dropdown-menu .dropdown-divider {
+	border-color: var(--pluto-gray-100);
+	margin: var(--pluto-space-1) 0;
+}
+
+/* Dropdown header */
+.dropdown-menu .dropdown-header {
+	font-size: var(--pluto-font-size-xs);
+	font-weight: var(--pluto-font-weight-semi);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--pluto-gray-500);
+	padding: var(--pluto-space-2) var(--pluto-space-4);
+}
+
+
+/* =========================================================================
+   5. Pages — Login & Signup
+   ========================================================================= */
+
+/* Login page background */
+.page-card {
+	border: 1px solid var(--pluto-gray-200) !important;
+	border-radius: var(--pluto-radius-lg) !important;
+	box-shadow: var(--pluto-shadow-lg) !important;
+	padding: var(--pluto-space-6) !important;
+	max-width: 420px;
+	margin: 0 auto;
+}
+
+body.frappe-login-page,
+#page-login {
+	background: var(--pluto-gray-50);
+}
+
+/* Login card title */
+.page-card-head .title {
+	font-size: var(--pluto-font-size-2xl);
+	font-weight: var(--pluto-font-weight-bold);
+	color: var(--pluto-gray-900);
+	margin-bottom: var(--pluto-space-1);
+}
+
+.page-card-head .indicator-pill {
+	display: none;
+}
+
+/* Login form fields */
+.page-card .form-group input {
+	border: 1px solid var(--pluto-gray-300);
+	border-radius: var(--pluto-radius);
+	padding: var(--pluto-space-2) var(--pluto-space-3);
+	font-size: var(--pluto-font-size-md);
+	height: auto;
+}
+
+.page-card .form-group input:focus {
+	border-color: var(--pluto-primary) !important;
+	box-shadow: 0 0 0 3px var(--pluto-primary-bg) !important;
+}
+
+/* Login button */
+.page-card .btn-login,
+.page-card .btn-primary {
+	background: var(--pluto-primary) !important;
+	border-color: var(--pluto-primary) !important;
+	border-radius: var(--pluto-radius) !important;
+	padding: var(--pluto-space-2) var(--pluto-space-4) !important;
+	font-size: var(--pluto-font-size-md) !important;
+	font-weight: var(--pluto-font-weight-semi) !important;
+	width: 100%;
+	margin-top: var(--pluto-space-3);
+}
+
+.page-card .btn-login:hover,
+.page-card .btn-primary:hover {
+	background: var(--pluto-primary-dark) !important;
+	border-color: var(--pluto-primary-dark) !important;
+}
+
+/* Social login buttons */
+.page-card .social-logins {
+	margin-top: var(--pluto-space-4);
+}
+
+.page-card .social-logins .btn-social {
+	border: 1px solid var(--pluto-gray-300);
+	border-radius: var(--pluto-radius);
+	padding: var(--pluto-space-2) var(--pluto-space-4);
+	font-size: var(--pluto-font-size-sm);
+	transition: all var(--pluto-transition-fast);
+}
+
+.page-card .social-logins .btn-social:hover {
+	background: var(--pluto-gray-50);
+	border-color: var(--pluto-gray-400);
+}
+
+/* "Forgot password" / links */
+.page-card a,
+.page-card .forgot-password {
+	color: var(--pluto-primary);
+	font-size: var(--pluto-font-size-sm);
+}
+
+.page-card a:hover {
+	color: var(--pluto-primary-dark);
+}
+
+/* Login logo */
+.page-card .login-logo img {
+	max-height: 48px;
+	margin-bottom: var(--pluto-space-4);
+}
+
+/* Divider */
+.page-card .or-divider {
+	color: var(--pluto-gray-400);
+	font-size: var(--pluto-font-size-xs);
+}
+
+
+/* =========================================================================
+   5. Pages — Desk / Workspace
+   ========================================================================= */
+
+/* Page container */
+.page-container {
+	background: var(--pluto-gray-50);
+}
+
+#page-container {
+	background: var(--pluto-gray-50);
+}
+
+/* Main section */
+.main-section {
+	background: var(--pluto-gray-50);
+}
+
+/* Page head (title bar) */
+.page-head {
+	background: var(--pluto-white);
+	border-bottom: 1px solid var(--pluto-gray-200);
+	box-shadow: var(--pluto-shadow-xs);
+}
+
+.page-head .page-title .title-text {
+	font-size: var(--pluto-font-size-xl);
+	font-weight: var(--pluto-font-weight-bold);
+	color: var(--pluto-gray-900);
+}
+
+/* Breadcrumbs */
+.page-head .breadcrumb-area .breadcrumb {
+	font-size: var(--pluto-font-size-xs);
+}
+
+.page-head .breadcrumb-area .breadcrumb a {
+	color: var(--pluto-gray-500);
+	transition: color var(--pluto-transition-fast);
+}
+
+.page-head .breadcrumb-area .breadcrumb a:hover {
+	color: var(--pluto-primary);
+}
+
+/* Workspace */
+.workspace-container {
+	padding: var(--pluto-space-5);
+}
+
+/* Module cards on workspace */
+.widget-group .widget-group-head {
+	font-size: var(--pluto-font-size-lg);
+	font-weight: var(--pluto-font-weight-semi);
+	color: var(--pluto-gray-900);
+	margin-bottom: var(--pluto-space-3);
+}
+
+/* Onboarding widget */
+.onboarding-widget-box {
+	background: var(--pluto-primary-bg);
+	border: 1px solid var(--pluto-primary-light);
+	border-radius: var(--pluto-radius-md);
+}
+
+/* Form view wrapper */
+.form-page,
+.form-group .form-layout {
+	background: var(--pluto-white);
+	border-radius: var(--pluto-radius-md);
+	box-shadow: var(--pluto-shadow-xs);
+}
+
+/* Page actions bar */
+.page-actions {
+	gap: var(--pluto-space-2);
+}
+
+/* Quick entry dialog */
+.quick-entry .modal-body {
+	padding: var(--pluto-space-4);
+}
+
+/* Timeline / activity */
+.timeline-item {
+	border-bottom: 1px solid var(--pluto-gray-100);
+	padding: var(--pluto-space-3) 0;
+}
+
+.timeline-item .timeline-badge {
+	color: var(--pluto-gray-400);
+}
+
+.timeline-item .timeline-content {
+	font-size: var(--pluto-font-size-sm);
+	color: var(--pluto-gray-700);
+}
+
+/* Help / documentation panel */
+.overlay-sidebar {
+	background: var(--pluto-white);
+	border-left: 1px solid var(--pluto-gray-200);
+	box-shadow: var(--pluto-shadow-lg);
+}
+
+
+/* =========================================================================
+   5. Pages — Print Styles
+   ========================================================================= */
+
+@media print {
+	body {
+		font-family: var(--pluto-font-family);
+		color: #000;
+		background: #fff;
+	}
+
+	.navbar,
+	.page-head,
+	.page-actions,
+	.desk-sidebar,
+	.layout-side-section,
+	.comment-box,
+	.form-footer,
+	footer {
+		display: none !important;
+	}
+
+	.print-format {
+		font-size: 10pt;
+		line-height: 1.4;
+	}
+
+	.print-format h1 {
+		font-size: 18pt;
+		font-weight: 700;
+	}
+
+	.print-format h2 {
+		font-size: 14pt;
+		font-weight: 600;
+	}
+
+	.print-format table {
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	.print-format table th,
+	.print-format table td {
+		border: 1px solid #ddd;
+		padding: 4pt 6pt;
+		font-size: 9pt;
+	}
+
+	.print-format table th {
+		background: #f4f4f4;
+		font-weight: 600;
+	}
+}
+
+/* Print preview on screen */
+.print-preview {
+	background: var(--pluto-white);
+	border: 1px solid var(--pluto-gray-200);
+	border-radius: var(--pluto-radius-md);
+	box-shadow: var(--pluto-shadow-sm);
+	padding: var(--pluto-space-6);
+	max-width: 800px;
+	margin: var(--pluto-space-4) auto;
+}

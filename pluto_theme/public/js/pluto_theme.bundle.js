@@ -211,41 +211,23 @@
 	}
 
 	function _injectIcons(spriteEl) {
-		var parser = new DOMParser();
-		var doc = spriteEl.ownerDocument;
-
 		Object.keys(CUSTOM_ICONS).forEach(function (symbolId) {
-			// Parse SVG content in the correct SVG namespace via DOMParser
-			var svgStr =
-				'<svg xmlns="http://www.w3.org/2000/svg">' +
-				CUSTOM_ICONS[symbolId] +
-				"</svg>";
-			var parsed = parser.parseFromString(svgStr, "image/svg+xml")
-				.documentElement;
-			var children = Array.from(parsed.childNodes);
-
-			var existing = spriteEl.querySelector("#" + symbolId);
-			if (existing) {
-				// Clear existing children
-				while (existing.firstChild) {
-					existing.removeChild(existing.firstChild);
+			try {
+				var existing = spriteEl.querySelector("#" + symbolId);
+				if (existing) {
+					existing.innerHTML = CUSTOM_ICONS[symbolId];
+				} else {
+					var symbol = document.createElementNS(
+						"http://www.w3.org/2000/svg",
+						"symbol"
+					);
+					symbol.setAttribute("id", symbolId);
+					symbol.setAttribute("viewBox", "0 0 16 16");
+					symbol.innerHTML = CUSTOM_ICONS[symbolId];
+					spriteEl.appendChild(symbol);
 				}
-				// Import parsed SVG children into the document
-				children.forEach(function (child) {
-					existing.appendChild(doc.importNode(child, true));
-				});
-			} else {
-				// Symbol doesn't exist yet — create it
-				var symbol = document.createElementNS(
-					"http://www.w3.org/2000/svg",
-					"symbol"
-				);
-				symbol.setAttribute("id", symbolId);
-				symbol.setAttribute("viewBox", "0 0 16 16");
-				children.forEach(function (child) {
-					symbol.appendChild(doc.importNode(child, true));
-				});
-				spriteEl.appendChild(symbol);
+			} catch (e) {
+				console.warn("Pluto: failed to inject icon " + symbolId, e);
 			}
 		});
 	}
@@ -327,12 +309,12 @@
 	});
 
 	// Fallback if startup already fired
-	if (frappe && frappe.boot) {
+	if (typeof frappe !== "undefined" && frappe.boot) {
 		boot();
 	}
 
 	// On every route change (SPA navigation)
-	if (frappe && frappe.router && frappe.router.on) {
+	if (typeof frappe !== "undefined" && frappe.router && frappe.router.on) {
 		frappe.router.on("change", function () {
 			// Re-apply icons after SPA route transitions
 			replaceModuleIcons();

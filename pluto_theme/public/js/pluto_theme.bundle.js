@@ -67,103 +67,122 @@
 	}
 
 	// ------------------------------------------------------------------
-	// Custom Module Icons — Neural-branded SVG replacements
+	// Custom Module Icons — Neural-branded filled SVG replacements
 	// ------------------------------------------------------------------
 	// Each entry maps a Frappe symbol ID to custom SVG inner content.
-	// All icons: 16×16 viewBox, stroke-based, using var(--icon-stroke).
-	const STROKE_ATTRS = 'stroke="var(--icon-stroke)" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"';
+	// All icons: 16×16 viewBox, filled style, using var(--icon-stroke).
+	// Designs based on the Neural brand icon set.
+	const IC = "var(--icon-stroke)";
 
 	const CUSTOM_ICONS = {
-		// Accounting — minimal open ledger book
-		"icon-accounting": `<path d="M2 2.5h4.5a1.5 1.5 0 0 1 1.5 1.5v9.5a1 1 0 0 0-1-1H2z" ${STROKE_ATTRS}/>
-			<path d="M14 2.5H9.5A1.5 1.5 0 0 0 8 4v9.5a1 1 0 0 1 1-1H14z" ${STROKE_ATTRS}/>`,
+		// Accounting — Bank/temple with columns
+		"icon-accounting":
+			`<path d="M8 1L2 5h12L8 1z" fill="${IC}"/>` +
+			`<rect x="2" y="5" width="12" height="1.2" fill="${IC}"/>` +
+			`<rect x="3.2" y="6.8" width="1.6" height="5.2" fill="${IC}" rx="0.3"/>` +
+			`<rect x="7.2" y="6.8" width="1.6" height="5.2" fill="${IC}" rx="0.3"/>` +
+			`<rect x="11.2" y="6.8" width="1.6" height="5.2" fill="${IC}" rx="0.3"/>` +
+			`<rect x="2" y="12.5" width="12" height="2" fill="${IC}" rx="0.4"/>`,
 
-		// Selling — upward trend arrow with base line
-		"icon-selling": `<polyline points="2 12 6 7 9 9.5 14 3" ${STROKE_ATTRS}/>
-			<polyline points="10.5 3 14 3 14 6.5" ${STROKE_ATTRS}/>
-			<line x1="2" y1="14" x2="14" y2="14" ${STROKE_ATTRS}/>`,
+		// Assets — Office building with windows (evenodd cutouts)
+		"icon-assets":
+			`<path fill-rule="evenodd" d="M4.5 1h7a1 1 0 011 1v12.5h-9V2a1 1 0 011-1z` +
+			`M5.8 3.5h1.6v1.6H5.8z M8.6 3.5h1.6v1.6H8.6z` +
+			`M5.8 6.5h1.6v1.6H5.8z M8.6 6.5h1.6v1.6H8.6z` +
+			`M7 10h2v4.5H7z" fill="${IC}"/>`,
 
-		// Buying — shopping bag
-		"icon-buying": `<path d="M3.5 5h9l-.8 7.5a1 1 0 0 1-1 .9H5.3a1 1 0 0 1-1-.9z" ${STROKE_ATTRS}/>
-			<path d="M5.5 5V4a2.5 2.5 0 0 1 5 0v1" ${STROKE_ATTRS}/>`,
+		// Buying — Shopping cart with items
+		"icon-buying":
+			`<path d="M4.3 4h10.2l-1.8 5.5H5.5z" fill="${IC}"/>` +
+			`<path d="M1 1h2.2l.8 2.5" fill="none" stroke="${IC}" stroke-width="1.4" stroke-linecap="round"/>` +
+			`<path d="M4 6.5l1.3 4h7" fill="none" stroke="${IC}" stroke-width="1.4" stroke-linecap="round"/>` +
+			`<circle cx="6" cy="13" r="1.3" fill="${IC}"/>` +
+			`<circle cx="11.5" cy="13" r="1.3" fill="${IC}"/>`,
 
-		// Stock — stacked boxes
-		"icon-stock": `<rect x="2" y="8.5" width="5.5" height="5" rx="0.5" ${STROKE_ATTRS}/>
-			<rect x="8.5" y="8.5" width="5.5" height="5" rx="0.5" ${STROKE_ATTRS}/>
-			<rect x="5" y="2.5" width="6" height="5" rx="0.5" ${STROKE_ATTRS}/>`,
+		// Stock — Stacked warehouse boxes
+		"icon-stock":
+			`<rect x="5" y="1.5" width="6" height="5" fill="${IC}" rx="0.5"/>` +
+			`<line x1="8" y1="1.5" x2="8" y2="6.5" stroke="${IC}" stroke-width="0.6" opacity="0.3"/>` +
+			`<rect x="1.5" y="8" width="6" height="5.5" fill="${IC}" rx="0.5"/>` +
+			`<line x1="4.5" y1="8" x2="4.5" y2="13.5" stroke="${IC}" stroke-width="0.6" opacity="0.3"/>` +
+			`<rect x="8.5" y="8" width="6" height="5.5" fill="${IC}" rx="0.5"/>` +
+			`<line x1="11.5" y1="8" x2="11.5" y2="13.5" stroke="${IC}" stroke-width="0.6" opacity="0.3"/>`,
 
-		// HR — person silhouette with circle head
-		"icon-hr-module": `<circle cx="8" cy="4.5" r="2.5" ${STROKE_ATTRS}/>
-			<path d="M3 14c0-2.8 2.2-5 5-5s5 2.2 5 5" ${STROKE_ATTRS}/>`,
+		// HR — Person silhouette
+		"icon-hr-module":
+			`<circle cx="8" cy="4" r="2.8" fill="${IC}"/>` +
+			`<path d="M2.5 15a5.5 5.5 0 0111 0z" fill="${IC}"/>`,
 
-		// Manufacturing — gear/cog
-		"icon-manufacturing": `<circle cx="8" cy="8" r="2" ${STROKE_ATTRS}/>
-			<path d="M8 1.5v1.3M8 13.2v1.3M1.5 8h1.3M13.2 8h1.3M3.4 3.4l.9.9M11.7 11.7l.9.9M3.4 12.6l.9-.9M11.7 4.3l.9-.9" ${STROKE_ATTRS}/>
-			<circle cx="8" cy="8" r="4.5" ${STROKE_ATTRS}/>`,
+		// Manufacturing — Gear with wrench
+		"icon-manufacturing":
+			`<path fill-rule="evenodd" d="M7.1 2.9 A5.2 5.2 0 0 1 6.9 2.9 L6.5 1.0 A7.2 7.2 0 0 1 9.5 1.0 L9.1 2.9 A5.2 5.2 0 0 1 10.8 3.6 L11.9 2.0 A7.2 7.2 0 0 1 14.0 4.1 L12.4 5.2 A5.2 5.2 0 0 1 13.1 6.9 L15.0 6.5 A7.2 7.2 0 0 1 15.0 9.5 L13.1 9.1 A5.2 5.2 0 0 1 12.4 10.8 L14.0 11.9 A7.2 7.2 0 0 1 11.9 14.0 L10.8 12.4 A5.2 5.2 0 0 1 9.1 13.1 L9.5 15.0 A7.2 7.2 0 0 1 6.5 15.0 L6.9 13.1 A5.2 5.2 0 0 1 5.2 12.4 L4.1 14.0 A7.2 7.2 0 0 1 2.0 11.9 L3.6 10.8 A5.2 5.2 0 0 1 2.9 9.1 L1.0 9.5 A7.2 7.2 0 0 1 1.0 6.5 L2.9 6.9 A5.2 5.2 0 0 1 3.6 5.2 L2.0 4.1 A7.2 7.2 0 0 1 4.1 2.0 L5.2 3.6 Z M8 6 A2 2 0 1 0 8 10 A2 2 0 1 0 8 6Z" fill="${IC}"/>`,
 
-		// Projects — kanban board (three columns with cards)
-		"icon-projects": `<rect x="2" y="2" width="3.2" height="12" rx="0.5" ${STROKE_ATTRS}/>
-			<rect x="6.4" y="2" width="3.2" height="8" rx="0.5" ${STROKE_ATTRS}/>
-			<rect x="10.8" y="2" width="3.2" height="5.5" rx="0.5" ${STROKE_ATTRS}/>`,
+		// Projects — Kanban board columns
+		"icon-projects":
+			`<rect x="1.5" y="1.5" width="3.5" height="13" fill="${IC}" rx="0.8"/>` +
+			`<rect x="6.2" y="1.5" width="3.5" height="8.5" fill="${IC}" rx="0.8"/>` +
+			`<rect x="11" y="1.5" width="3.5" height="5.5" fill="${IC}" rx="0.8"/>`,
 
-		// CRM — two people connected (relationship)
-		"icon-crm": `<circle cx="5" cy="5" r="2" ${STROKE_ATTRS}/>
-			<circle cx="11" cy="5" r="2" ${STROKE_ATTRS}/>
-			<path d="M1.5 13.5c0-2 1.6-3.5 3.5-3.5c.8 0 1.5.3 2.1.7" ${STROKE_ATTRS}/>
-			<path d="M14.5 13.5c0-2-1.6-3.5-3.5-3.5c-.8 0-1.5.3-2.1.7" ${STROKE_ATTRS}/>`,
+		// CRM — Two people / relationship
+		"icon-crm":
+			`<circle cx="5.5" cy="4.5" r="2.2" fill="${IC}"/>` +
+			`<circle cx="10.5" cy="4.5" r="2.2" fill="${IC}"/>` +
+			`<path d="M1 14a4.5 4.5 0 019 0z" fill="${IC}"/>` +
+			`<path d="M6 14a4.5 4.5 0 019 0z" fill="${IC}"/>`,
 
-		// Assets — building
-		"icon-assets": `<rect x="3" y="3" width="10" height="11" rx="0.5" ${STROKE_ATTRS}/>
-			<line x1="3" y1="6" x2="13" y2="6" ${STROKE_ATTRS}/>
-			<line x1="6" y1="9" x2="6" y2="14" ${STROKE_ATTRS}/>
-			<line x1="10" y1="9" x2="10" y2="14" ${STROKE_ATTRS}/>
-			<line x1="8" y1="9" x2="8" y2="14" ${STROKE_ATTRS}/>`,
+		// Support — Headset
+		"icon-support":
+			`<path d="M3.5 8.5V7a4.5 4.5 0 019 0v1.5" fill="none" stroke="${IC}" stroke-width="1.8" stroke-linecap="round"/>` +
+			`<rect x="1" y="8.5" width="3" height="4" fill="${IC}" rx="1"/>` +
+			`<rect x="12" y="8.5" width="3" height="4" fill="${IC}" rx="1"/>` +
+			`<path d="M12 12.5c0 1.5-1.8 2.5-4 2.5" fill="none" stroke="${IC}" stroke-width="1.2" stroke-linecap="round"/>`,
 
-		// Support — headset
-		"icon-support": `<path d="M3 9V7a5 5 0 0 1 10 0v2" ${STROKE_ATTRS}/>
-			<rect x="1.5" y="9" width="2.5" height="3.5" rx="0.5" ${STROKE_ATTRS}/>
-			<rect x="12" y="9" width="2.5" height="3.5" rx="0.5" ${STROKE_ATTRS}/>
-			<path d="M12 12.5c0 1.4-1.8 2.5-4 2.5" ${STROKE_ATTRS}/>`,
+		// Quality — Magnifying glass with checkmark
+		"icon-quality-module":
+			`<path fill-rule="evenodd" d="M7 1a6 6 0 104.45 10.03l3.26 3.26a1 1 0 001.41-1.41l-3.26-3.26A6 6 0 007 1zM3 7a4 4 0 118 0 4 4 0 01-8 0z" fill="${IC}"/>` +
+			`<polyline points="5 7 6.5 8.8 9.5 5.5" fill="none" stroke="${IC}" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>`,
 
-		// Quality — shield with checkmark
-		"icon-quality-module": `<path d="M8 1.5L2.5 4v4c0 3.5 2.3 6 5.5 7c3.2-1 5.5-3.5 5.5-7V4z" ${STROKE_ATTRS}/>
-			<polyline points="5.5 8 7.2 10 10.5 6.5" ${STROKE_ATTRS}/>`,
+		// Setup — Gear / settings (matching reference "ERPNext Setting")
+		"icon-setup":
+			`<path fill-rule="evenodd" d="M7.0 3.8 A4.8 4.8 0 0 1 7.1 3.8 L6.8 2.1 A6.5 6.5 0 0 1 9.2 2.1 L8.9 3.8 A4.8 4.8 0 0 1 10.7 4.5 L11.6 3.1 A6.5 6.5 0 0 1 13.4 4.9 L12.0 5.8 A4.8 4.8 0 0 1 12.7 7.6 L14.4 7.3 A6.5 6.5 0 0 1 14.4 9.7 L12.7 9.4 A4.8 4.8 0 0 1 12.0 11.2 L13.4 12.1 A6.5 6.5 0 0 1 11.6 13.9 L10.7 12.5 A4.8 4.8 0 0 1 8.9 13.2 L9.2 14.9 A6.5 6.5 0 0 1 6.8 14.9 L7.1 13.2 A4.8 4.8 0 0 1 5.3 12.5 L4.4 13.9 A6.5 6.5 0 0 1 2.6 12.1 L4.0 11.2 A4.8 4.8 0 0 1 3.3 9.4 L1.6 9.7 A6.5 6.5 0 0 1 1.6 7.3 L3.3 7.6 A4.8 4.8 0 0 1 4.0 5.8 L2.6 4.9 A6.5 6.5 0 0 1 4.4 3.1 L5.3 4.5 Z M8 6.7 A1.8 1.8 0 1 0 8 10.3 A1.8 1.8 0 1 0 8 6.7Z" fill="${IC}"/>`,
 
-		// Setup — three horizontal sliders
-		"icon-setup": `<line x1="2" y1="4" x2="14" y2="4" ${STROKE_ATTRS}/>
-			<line x1="2" y1="8" x2="14" y2="8" ${STROKE_ATTRS}/>
-			<line x1="2" y1="12" x2="14" y2="12" ${STROKE_ATTRS}/>
-			<circle cx="5" cy="4" r="1.2" fill="var(--icon-stroke)" stroke="var(--icon-stroke)" stroke-width="0"/>
-			<circle cx="10" cy="8" r="1.2" fill="var(--icon-stroke)" stroke="var(--icon-stroke)" stroke-width="0"/>
-			<circle cx="7" cy="12" r="1.2" fill="var(--icon-stroke)" stroke="var(--icon-stroke)" stroke-width="0"/>`,
+		// Selling — Handshake (matching reference)
+		"icon-selling":
+			`<path d="M1 7h2.5l2.5 2 3-1.5L11 9l2.5-2H16" fill="none" stroke="${IC}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>` +
+			`<path d="M5.5 9l-1 3.5 2.5-1 2 1.5 2-1.5 1.5 1-1-3.5" fill="none" stroke="${IC}" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>` +
+			`<path d="M1 4.5h3l1.5 2" fill="none" stroke="${IC}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>` +
+			`<path d="M15 4.5h-3l-1.5 2" fill="none" stroke="${IC}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>`,
 
-		// Education — graduation cap
-		"icon-education": `<polygon points="8 2 1.5 6 8 10 14.5 6" ${STROKE_ATTRS}/>
-			<path d="M4 7.5v4c0 1 1.8 2 4 2s4-1 4-2v-4" ${STROKE_ATTRS}/>
-			<line x1="14.5" y1="6" x2="14.5" y2="11" ${STROKE_ATTRS}/>`,
+		// Education — Graduation cap
+		"icon-education":
+			`<polygon points="8 2 1 6 8 10 15 6" fill="${IC}"/>` +
+			`<path d="M4 7.5v4c0 1.2 1.8 2.2 4 2.2s4-1 4-2.2v-4" fill="${IC}"/>` +
+			`<rect x="14" y="6" width="1.2" height="5" fill="${IC}" rx="0.3"/>` +
+			`<circle cx="14.6" cy="11.5" r="0.8" fill="${IC}"/>`,
 
-		// Healthcare — heart with pulse line
-		"icon-healthcare": `<path d="M8 13.5l-5-5.2A3.2 3.2 0 0 1 3 4a3 3 0 0 1 5 0a3 3 0 0 1 5 0a3.2 3.2 0 0 1 0 4.3z" ${STROKE_ATTRS}/>
-			<polyline points="5 8 6.5 8 7.5 6 8.5 10 9.5 8 11 8" ${STROKE_ATTRS}/>`,
+		// Healthcare — Heart with pulse line
+		"icon-healthcare":
+			`<path d="M8 14l-5.5-5.5A3.5 3.5 0 012.5 4 3.2 3.2 0 018 3a3.2 3.2 0 015.5 1 3.5 3.5 0 010 4.5z" fill="${IC}"/>` +
+			`<polyline points="4.5 8 6 8 7 6 8.2 10.5 9.5 7.5 11.5 8" fill="none" stroke="${IC}" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>`,
 
-		// Retail — storefront
-		"icon-retail": `<rect x="2" y="6.5" width="12" height="7.5" rx="0.5" ${STROKE_ATTRS}/>
-			<polygon points="2 6.5 4 2.5 12 2.5 14 6.5" ${STROKE_ATTRS}/>
-			<path d="M6.5 14v-3.5a1.5 1.5 0 0 1 3 0V14" ${STROKE_ATTRS}/>
-			<line x1="5" y1="6.5" x2="5" y2="2.5" ${STROKE_ATTRS}/>
-			<line x1="8" y1="6.5" x2="8" y2="2.5" ${STROKE_ATTRS}/>
-			<line x1="11" y1="6.5" x2="11" y2="2.5" ${STROKE_ATTRS}/>`,
+		// Retail — Storefront
+		"icon-retail":
+			`<path d="M2 7h12v7.5H2z" fill="${IC}"/>` +
+			`<path d="M3.5 2h9L14 7H2z" fill="${IC}"/>` +
+			`<path fill-rule="evenodd" d="M6.5 10h3v4.5h-3z" fill="${IC}" opacity="0.3"/>`,
 
-		// Non Profit — helping hand with heart
-		"icon-non-profit": `<path d="M2 9.5c0-1 .8-1.5 1.5-1.5S5 9 5 9l1.5 1.5" ${STROKE_ATTRS}/>
-			<path d="M5 10.5L2 13" ${STROKE_ATTRS}/>
-			<path d="M6.5 10.5l4-3c.6-.5 1.5-.4 1.8.3s0 1.5-.6 2l-2.2 1.7" ${STROKE_ATTRS}/>
-			<path d="M10 3.5a1.5 1.5 0 0 1 2.4-1.2a1.5 1.5 0 0 1 2.4 1.2c0 1.5-2.4 3-2.4 3S10 5 10 3.5z" ${STROKE_ATTRS}/>`,
+		// Non Profit — Hand cradling heart
+		"icon-non-profit":
+			`<path d="M8.5 3a1.8 1.8 0 013 0 1.8 1.8 0 013 0c.5 1.8-1.5 3.8-3 5-1.5-1.2-3.5-3.2-3-5z" fill="${IC}"/>` +
+			`<path d="M1.5 10c0-.8.6-1.5 1.5-1.5s1.5.7 2 1.2l1.5 1.3" fill="none" stroke="${IC}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>` +
+			`<path d="M5 11.5L2.5 14" fill="none" stroke="${IC}" stroke-width="1.4" stroke-linecap="round"/>` +
+			`<path d="M6.5 11l3.5-2c.5-.3 1.2-.1 1.4.4.2.5 0 1.1-.5 1.4L8 13" fill="none" stroke="${IC}" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>`,
 
-		// Agriculture — leaf/plant sprouting
-		"icon-agriculture": `<path d="M8 14V8" ${STROKE_ATTRS}/>
-			<path d="M8 8c0-3 2.5-5.5 5.5-5.5C13.5 5.5 11 8 8 8z" ${STROKE_ATTRS}/>
-			<path d="M8 11c0-2-1.8-3.5-4-3.5C4 9.5 5.8 11 8 11z" ${STROKE_ATTRS}/>`,
+		// Agriculture — Filled leaf/plant
+		"icon-agriculture":
+			`<path d="M7.5 14V8.5" fill="none" stroke="${IC}" stroke-width="1.5" stroke-linecap="round"/>` +
+			`<path d="M7.5 8.5c0-3.5 3-6 6-6C13.5 6 11 8.5 7.5 8.5z" fill="${IC}"/>` +
+			`<path d="M7.5 11.5c0-2.5-2-4-4.5-4C3 10 5 11.5 7.5 11.5z" fill="${IC}"/>`,
 	};
 
 	/**

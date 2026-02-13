@@ -9,6 +9,6 @@ def get_data():
             "label": _("Pluto Theme"),
             "color": "#0000ff",
             "icon": "octicon octicon-paintbrush",
-            "description": "Custom theme and styling for Pluto.",
+            "description": "Custom theme and styling for Frappe / ERPNext.",
         }
     ]

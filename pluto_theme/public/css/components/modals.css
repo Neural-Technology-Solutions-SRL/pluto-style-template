@@ -54,7 +54,7 @@
 	opacity: 0.5;
 }
 
-/* Pluto dialog */
+/* Frappe dialog */
 .frappe-dialog .modal-dialog {
 	border-radius: var(--pluto-radius-lg);
 }

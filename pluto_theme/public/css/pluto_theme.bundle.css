@@ -13,43 +13,43 @@
 :root {
 	/* Brand colours — Neural identity
 	   Base palette: #1B1548 · #3E97D1 · #AEAEAE · #FFFFFF
-	   All tints/shades are derived from these four colours. */
-	--pluto-primary:           #3E97D1;
-	--pluto-primary-light:     #9ECBE8;
+	   All derived values are WCAG AAA compliant (≥ 7:1 for text). */
+	--pluto-primary:           #215070;
+	--pluto-primary-light:     #3E97D1;
 	--pluto-primary-dark:      #1B1548;
-	--pluto-primary-bg:        rgba(62, 151, 209, 0.08);
+	--pluto-primary-bg:        rgba(33, 80, 112, 0.08);
 
 	--pluto-secondary:         #1B1548;
-	--pluto-secondary-light:   #8D8AA4;
+	--pluto-secondary-light:   #565271;
 	--pluto-secondary-dark:    #1B1548;
 
-	--pluto-accent:            #3E97D1;
-	--pluto-accent-light:      #9ECBE8;
+	--pluto-accent:            #215070;
+	--pluto-accent-light:      #3E97D1;
 	--pluto-accent-dark:       #1B1548;
 
-	/* Neutral palette — derived from #AEAEAE → #FFFFFF (light) and #1B1548 (dark) */
+	/* Neutral palette — blends of #AEAEAE → #1B1548, darkened for AAA text contrast */
 	--pluto-white:             #FFFFFF;
 	--pluto-gray-50:           #FAFAFA;
 	--pluto-gray-100:          #F5F5F5;
 	--pluto-gray-200:          #EDEDED;
 	--pluto-gray-300:          #E3E3E3;
 	--pluto-gray-400:          #D2D2D2;
-	--pluto-gray-500:          #AEAEAE;
-	--pluto-gray-600:          #8D8AA4;
-	--pluto-gray-700:          #6B6788;
-	--pluto-gray-800:          #3D3863;
+	--pluto-gray-500:          #565271;
+	--pluto-gray-600:          #4E4B6C;
+	--pluto-gray-700:          #403B62;
+	--pluto-gray-800:          #312C57;
 	--pluto-gray-900:          #1B1548;
 	--pluto-black:             #1B1548;
 
-	/* Semantic / feedback colours */
-	--pluto-success:           #16a34a;
+	/* Semantic / feedback colours — darkened for AAA on their light backgrounds */
+	--pluto-success:           #0C5F2B;
 	--pluto-success-light:     #dcfce7;
-	--pluto-warning:           #ca8a04;
+	--pluto-warning:           #714D02;
 	--pluto-warning-light:     #fef9c3;
-	--pluto-danger:            #dc2626;
+	--pluto-danger:            #951919;
 	--pluto-danger-light:      #fee2e2;
-	--pluto-info:              #3E97D1;
-	--pluto-info-light:        rgba(62, 151, 209, 0.12);
+	--pluto-info:              #215070;
+	--pluto-info-light:        rgba(33, 80, 112, 0.12);
 }
 
 /* Dark mode overrides */
@@ -57,9 +57,9 @@
 	--pluto-white:       #1B1548;
 	--pluto-gray-50:     #221D4D;
 	--pluto-gray-100:    #2A2452;
-	--pluto-gray-200:    #38345C;
-	--pluto-gray-300:    #474367;
-	--pluto-gray-400:    #65617B;
+	--pluto-gray-200:    #312C57;
+	--pluto-gray-300:    #403B62;
+	--pluto-gray-400:    #4E4B6C;
 	--pluto-gray-500:    #AEAEAE;
 	--pluto-gray-600:    #D2D2D2;
 	--pluto-gray-700:    #E3E3E3;
@@ -67,11 +67,11 @@
 	--pluto-gray-900:    #FFFFFF;
 	--pluto-black:       #FFFFFF;
 
-	--pluto-primary-bg:      rgba(62, 151, 209, 0.12);
-	--pluto-success-light:   rgba(22, 163, 74, 0.15);
-	--pluto-warning-light:   rgba(202, 138, 4, 0.15);
-	--pluto-danger-light:    rgba(220, 38, 38, 0.15);
-	--pluto-info-light:      rgba(62, 151, 209, 0.15);
+	--pluto-primary-bg:      rgba(33, 80, 112, 0.15);
+	--pluto-success-light:   rgba(12, 95, 43, 0.20);
+	--pluto-warning-light:   rgba(113, 77, 2, 0.20);
+	--pluto-danger-light:    rgba(149, 25, 25, 0.20);
+	--pluto-info-light:      rgba(33, 80, 112, 0.18);
 }
 
 
@@ -117,8 +117,8 @@ pre code {
 }
 
 ::selection {
-	background: var(--pluto-primary-light);
-	color: var(--pluto-gray-900);
+	background: var(--pluto-primary-dark);
+	color: var(--pluto-white);
 }
 
 
@@ -232,7 +232,7 @@ footer a:hover {
 }
 
 .footer-powered {
-	color: var(--pluto-gray-400);
+	color: var(--pluto-gray-500);
 }
 
 
@@ -481,13 +481,13 @@ footer a:hover {
 .indicator-pill.orange,
 .indicator-pill[data-indicator="orange"] {
 	background: var(--pluto-warning-light);
-	color: #E17D24;
+	color: #7D4514;
 }
 
 .indicator-pill.yellow,
 .indicator-pill[data-indicator="yellow"] {
 	background: var(--pluto-warning-light);
-	color: #B8860B;
+	color: #6D4F06;
 }
 
 .indicator-pill.blue,
@@ -498,8 +498,8 @@ footer a:hover {
 
 .indicator-pill.purple,
 .indicator-pill[data-indicator="purple"] {
-	background: rgba(27, 21, 72, 0.08);
-	color: #1B1548;
+	background: rgba(27, 21, 72, 0.10);
+	color: var(--pluto-primary-dark);
 }
 
 .indicator-pill.gray,
@@ -682,7 +682,7 @@ body.frappe-login-page,
 }
 
 .page-card .or-divider {
-	color: var(--pluto-gray-400);
+	color: var(--pluto-gray-500);
 }
 
 
@@ -732,7 +732,7 @@ body.frappe-login-page,
 }
 
 .timeline-item .timeline-badge {
-	color: var(--pluto-gray-400);
+	color: var(--pluto-gray-500);
 }
 
 .timeline-item .timeline-content {

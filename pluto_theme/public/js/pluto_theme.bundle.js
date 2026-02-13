@@ -3,10 +3,10 @@
  * =========================================================================
  * This JS bundle loads on every desk page. Use it for:
  *   - DOM manipulations that CSS alone cannot achieve
- *   - Frappe event hooks (after_load, on_page_change, etc.)
+ *   - Pluto event hooks (after_load, on_page_change, etc.)
  *   - Dynamic class toggling (dark mode, sidebar collapse, etc.)
  *
- * The bundle is auto-included by Frappe's build system via the
+ * The bundle is auto-included by Pluto's build system via the
  * `.bundle.js` naming convention + `app_include_js` in hooks.py.
  * =========================================================================
  */
@@ -30,7 +30,7 @@
 		// Custom brand logo URL (set null to keep default)
 		customBrandLogo: "/assets/pluto_theme/images/logo-neural.png",
 
-		// Hide "Powered by Frappe" in the footer
+		// Hide "Powered by Pluto" in the footer
 		hidePoweredBy: false,
 
 		// Add a CSS class to <body> so you can scope styles
@@ -69,7 +69,7 @@
 	// ------------------------------------------------------------------
 	// Custom Module Icons — Neural-branded filled SVG replacements
 	// ------------------------------------------------------------------
-	// Each entry maps a Frappe symbol ID to custom SVG inner content.
+	// Each entry maps a Pluto symbol ID to custom SVG inner content.
 	// All icons: 16×16 viewBox, filled style, using var(--icon-stroke).
 	// Designs based on the Neural brand icon set.
 	const IC = "var(--icon-stroke)";
@@ -142,7 +142,7 @@
 			`<path fill-rule="evenodd" d="M7 1a6 6 0 104.45 10.03l3.26 3.26a1 1 0 001.41-1.41l-3.26-3.26A6 6 0 007 1zM3 7a4 4 0 118 0 4 4 0 01-8 0z" fill="${IC}"/>` +
 			`<polyline points="5 7 6.5 8.8 9.5 5.5" fill="none" stroke="${IC}" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>`,
 
-		// Setup — Gear / settings (matching reference "ERPNext Setting")
+		// Setup — Gear / settings (matching reference "Pluto Setting")
 		"icon-setup":
 			`<path fill-rule="evenodd" d="M7.2 1.5h1.6l.3 1.8a4.6 4.6 0 011.5.8l1.6-.9 1.1 1.1-.9 1.6c.4.5.6 1 .8 1.5l1.8.3v1.6l-1.8.3a4.6 4.6 0 01-.8 1.5l.9 1.6-1.1 1.1-1.6-.9c-.5.4-1 .6-1.5.8l-.3 1.8H7.2l-.3-1.8a4.6 4.6 0 01-1.5-.8l-1.6.9-1.1-1.1.9-1.6a4.6 4.6 0 01-.8-1.5l-1.8-.3V7.3l1.8-.3c.2-.5.4-1 .8-1.5l-.9-1.6 1.1-1.1 1.6.9c.5-.4 1-.6 1.5-.8l.3-1.8zM8 6.2a1.8 1.8 0 100 3.6 1.8 1.8 0 000-3.6z" fill="${IC}"/>`,
 
@@ -186,8 +186,8 @@
 	};
 
 	/**
-	 * Replace Frappe's default module icons with Neural custom SVG symbols.
-	 * Finds `#frappe-symbols` and swaps matching `<symbol>` inner content.
+	 * Replace Pluto's default module icons with Neural custom SVG symbols.
+	 * Finds the sprite sheet and swaps matching `<symbol>` inner content.
 	 * If the sprite sheet isn't in the DOM yet, retries via MutationObserver.
 	 */
 	function replaceModuleIcons() {
@@ -300,7 +300,7 @@
 	}
 
 	// ------------------------------------------------------------------
-	// Frappe event hooks
+	// Pluto event hooks
 	// ------------------------------------------------------------------
 
 	// After the desk page loads

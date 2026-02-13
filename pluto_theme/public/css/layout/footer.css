@@ -20,7 +20,7 @@ footer a:hover {
 	color: var(--pluto-primary);
 }
 
-/* "Powered by" badge in Frappe */
+/* "Powered by" badge in Pluto */
 .footer-powered {
 	font-size: var(--pluto-font-size-xs);
 	color: var(--pluto-gray-400);

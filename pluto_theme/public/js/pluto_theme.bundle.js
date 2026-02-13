@@ -222,6 +222,7 @@
 				"</svg>";
 			var parsed = parser.parseFromString(svgStr, "image/svg+xml")
 				.documentElement;
+			var children = Array.from(parsed.childNodes);
 
 			var existing = spriteEl.querySelector("#" + symbolId);
 			if (existing) {
@@ -230,9 +231,9 @@
 					existing.removeChild(existing.firstChild);
 				}
 				// Import parsed SVG children into the document
-				while (parsed.firstChild) {
-					existing.appendChild(doc.importNode(parsed.firstChild, true));
-				}
+				children.forEach(function (child) {
+					existing.appendChild(doc.importNode(child, true));
+				});
 			} else {
 				// Symbol doesn't exist yet — create it
 				var symbol = document.createElementNS(
@@ -241,9 +242,9 @@
 				);
 				symbol.setAttribute("id", symbolId);
 				symbol.setAttribute("viewBox", "0 0 16 16");
-				while (parsed.firstChild) {
-					symbol.appendChild(doc.importNode(parsed.firstChild, true));
-				}
+				children.forEach(function (child) {
+					symbol.appendChild(doc.importNode(child, true));
+				});
 				spriteEl.appendChild(symbol);
 			}
 		});

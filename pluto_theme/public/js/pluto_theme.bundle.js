@@ -113,9 +113,9 @@
 			`<circle cx="8" cy="4" r="2.8" fill="${IC}"/>` +
 			`<path d="M2.5 15a5.5 5.5 0 0111 0z" fill="${IC}"/>`,
 
-		// Manufacturing — Gear with wrench
+		// Manufacturing — Gear (polygon-based teeth)
 		"icon-manufacturing":
-			`<path fill-rule="evenodd" d="M7.1 2.9 A5.2 5.2 0 0 1 6.9 2.9 L6.5 1.0 A7.2 7.2 0 0 1 9.5 1.0 L9.1 2.9 A5.2 5.2 0 0 1 10.8 3.6 L11.9 2.0 A7.2 7.2 0 0 1 14.0 4.1 L12.4 5.2 A5.2 5.2 0 0 1 13.1 6.9 L15.0 6.5 A7.2 7.2 0 0 1 15.0 9.5 L13.1 9.1 A5.2 5.2 0 0 1 12.4 10.8 L14.0 11.9 A7.2 7.2 0 0 1 11.9 14.0 L10.8 12.4 A5.2 5.2 0 0 1 9.1 13.1 L9.5 15.0 A7.2 7.2 0 0 1 6.5 15.0 L6.9 13.1 A5.2 5.2 0 0 1 5.2 12.4 L4.1 14.0 A7.2 7.2 0 0 1 2.0 11.9 L3.6 10.8 A5.2 5.2 0 0 1 2.9 9.1 L1.0 9.5 A7.2 7.2 0 0 1 1.0 6.5 L2.9 6.9 A5.2 5.2 0 0 1 3.6 5.2 L2.0 4.1 A7.2 7.2 0 0 1 4.1 2.0 L5.2 3.6 Z M8 6 A2 2 0 1 0 8 10 A2 2 0 1 0 8 6Z" fill="${IC}"/>`,
+			`<path fill-rule="evenodd" d="M6.8 1h2.4l.4 2.1a5 5 0 011.6.9l1.9-1.1 1.7 1.7-1.1 1.9a5 5 0 01.9 1.6l2.1.4v2.4l-2.1.4a5 5 0 01-.9 1.6l1.1 1.9-1.7 1.7-1.9-1.1a5 5 0 01-1.6.9L9.2 15H6.8l-.4-2.1a5 5 0 01-1.6-.9l-1.9 1.1-1.7-1.7 1.1-1.9a5 5 0 01-.9-1.6L1.3 9.5V7.1l2.1-.4a5 5 0 01.9-1.6L3.2 3.2l1.7-1.7 1.9 1.1a5 5 0 011.6-.9L6.8 1zM8 5.8a2.2 2.2 0 100 4.4 2.2 2.2 0 000-4.4z" fill="${IC}"/>`,
 
 		// Projects — Kanban board columns
 		"icon-projects":
@@ -144,7 +144,7 @@
 
 		// Setup — Gear / settings (matching reference "ERPNext Setting")
 		"icon-setup":
-			`<path fill-rule="evenodd" d="M7.0 3.8 A4.8 4.8 0 0 1 7.1 3.8 L6.8 2.1 A6.5 6.5 0 0 1 9.2 2.1 L8.9 3.8 A4.8 4.8 0 0 1 10.7 4.5 L11.6 3.1 A6.5 6.5 0 0 1 13.4 4.9 L12.0 5.8 A4.8 4.8 0 0 1 12.7 7.6 L14.4 7.3 A6.5 6.5 0 0 1 14.4 9.7 L12.7 9.4 A4.8 4.8 0 0 1 12.0 11.2 L13.4 12.1 A6.5 6.5 0 0 1 11.6 13.9 L10.7 12.5 A4.8 4.8 0 0 1 8.9 13.2 L9.2 14.9 A6.5 6.5 0 0 1 6.8 14.9 L7.1 13.2 A4.8 4.8 0 0 1 5.3 12.5 L4.4 13.9 A6.5 6.5 0 0 1 2.6 12.1 L4.0 11.2 A4.8 4.8 0 0 1 3.3 9.4 L1.6 9.7 A6.5 6.5 0 0 1 1.6 7.3 L3.3 7.6 A4.8 4.8 0 0 1 4.0 5.8 L2.6 4.9 A6.5 6.5 0 0 1 4.4 3.1 L5.3 4.5 Z M8 6.7 A1.8 1.8 0 1 0 8 10.3 A1.8 1.8 0 1 0 8 6.7Z" fill="${IC}"/>`,
+			`<path fill-rule="evenodd" d="M7.2 1.5h1.6l.3 1.8a4.6 4.6 0 011.5.8l1.6-.9 1.1 1.1-.9 1.6c.4.5.6 1 .8 1.5l1.8.3v1.6l-1.8.3a4.6 4.6 0 01-.8 1.5l.9 1.6-1.1 1.1-1.6-.9c-.5.4-1 .6-1.5.8l-.3 1.8H7.2l-.3-1.8a4.6 4.6 0 01-1.5-.8l-1.6.9-1.1-1.1.9-1.6a4.6 4.6 0 01-.8-1.5l-1.8-.3V7.3l1.8-.3c.2-.5.4-1 .8-1.5l-.9-1.6 1.1-1.1 1.6.9c.5-.4 1-.6 1.5-.8l.3-1.8zM8 6.2a1.8 1.8 0 100 3.6 1.8 1.8 0 000-3.6z" fill="${IC}"/>`,
 
 		// Selling — Handshake (matching reference)
 		"icon-selling":
@@ -211,19 +211,39 @@
 	}
 
 	function _injectIcons(spriteEl) {
+		var parser = new DOMParser();
+		var doc = spriteEl.ownerDocument;
+
 		Object.keys(CUSTOM_ICONS).forEach(function (symbolId) {
-			const existing = spriteEl.querySelector("#" + symbolId);
+			// Parse SVG content in the correct SVG namespace via DOMParser
+			var svgStr =
+				'<svg xmlns="http://www.w3.org/2000/svg">' +
+				CUSTOM_ICONS[symbolId] +
+				"</svg>";
+			var parsed = parser.parseFromString(svgStr, "image/svg+xml")
+				.documentElement;
+
+			var existing = spriteEl.querySelector("#" + symbolId);
 			if (existing) {
-				existing.innerHTML = CUSTOM_ICONS[symbolId];
+				// Clear existing children
+				while (existing.firstChild) {
+					existing.removeChild(existing.firstChild);
+				}
+				// Import parsed SVG children into the document
+				while (parsed.firstChild) {
+					existing.appendChild(doc.importNode(parsed.firstChild, true));
+				}
 			} else {
 				// Symbol doesn't exist yet — create it
-				const symbol = document.createElementNS(
+				var symbol = document.createElementNS(
 					"http://www.w3.org/2000/svg",
 					"symbol"
 				);
 				symbol.setAttribute("id", symbolId);
 				symbol.setAttribute("viewBox", "0 0 16 16");
-				symbol.innerHTML = CUSTOM_ICONS[symbolId];
+				while (parsed.firstChild) {
+					symbol.appendChild(doc.importNode(parsed.firstChild, true));
+				}
 				spriteEl.appendChild(symbol);
 			}
 		});

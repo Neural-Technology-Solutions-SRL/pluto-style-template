@@ -3,10 +3,10 @@
  * =========================================================================
  * This JS bundle loads on every desk page. Use it for:
  *   - DOM manipulations that CSS alone cannot achieve
- *   - Frappe event hooks (after_load, on_page_change, etc.)
+ *   - Pluto event hooks (after_load, on_page_change, etc.)
  *   - Dynamic class toggling (dark mode, sidebar collapse, etc.)
  *
- * The bundle is auto-included by Frappe's build system via the
+ * The bundle is auto-included by Pluto's build system via the
  * `.bundle.js` naming convention + `app_include_js` in hooks.py.
  * =========================================================================
  */
@@ -30,7 +30,7 @@
 		// Custom brand logo URL (set null to keep default)
 		customBrandLogo: "/assets/pluto_theme/images/logo-neural.png",
 
-		// Hide "Powered by Frappe" in the footer
+		// Hide "Powered by Pluto" in the footer
 		hidePoweredBy: false,
 
 		// Add a CSS class to <body> so you can scope styles
@@ -69,7 +69,7 @@
 	// ------------------------------------------------------------------
 	// Custom Module Icons — Neural-branded SVG replacements
 	// ------------------------------------------------------------------
-	// Each entry maps a Frappe symbol ID to custom SVG inner content.
+	// Each entry maps a Pluto symbol ID to custom SVG inner content.
 	// All icons: 16×16 viewBox, stroke-based, using var(--icon-stroke).
 	const STROKE_ATTRS = 'stroke="var(--icon-stroke)" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"';
 
@@ -167,8 +167,8 @@
 	};
 
 	/**
-	 * Replace Frappe's default module icons with Neural custom SVG symbols.
-	 * Finds `#frappe-symbols` and swaps matching `<symbol>` inner content.
+	 * Replace Pluto's default module icons with Neural custom SVG symbols.
+	 * Finds the sprite sheet and swaps matching `<symbol>` inner content.
 	 * If the sprite sheet isn't in the DOM yet, retries via MutationObserver.
 	 */
 	function replaceModuleIcons() {
@@ -278,7 +278,7 @@
 	}
 
 	// ------------------------------------------------------------------
-	// Frappe event hooks
+	// Pluto event hooks
 	// ------------------------------------------------------------------
 
 	// After the desk page loads

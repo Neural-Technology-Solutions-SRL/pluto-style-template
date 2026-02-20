@@ -1,7 +1,7 @@
 app_name = "pluto_theme"
 app_title = "Pluto Theme"
 app_publisher = "Neural"
-app_description = "Custom theme and styling overrides for Frappe / ERPNext v16"
+app_description = "Custom theme and styling overrides for Pluto v16"
 app_email = "hello@neural.com"
 app_license = "MIT"
 app_version = "0.1.0"
@@ -10,7 +10,7 @@ app_version = "0.1.0"
 # Assets — included on every desk page
 # --------------------------------------------------------------------------
 # The .bundle.css / .bundle.js files in public/ are auto-bundled by the
-# Frappe build system. We also register them explicitly so they load on
+# Pluto build system. We also register them explicitly so they load on
 # all desk pages (including the login screen for the CSS).
 
 app_include_css = [
@@ -49,7 +49,7 @@ website_context = {
     "splash_image": "/assets/pluto_theme/images/logo-neural.png",
 }
 
-# Home page (leave commented to keep Frappe default)
+# Home page (leave commented to keep Pluto default)
 # home_page = "login"
 
 # --------------------------------------------------------------------------
@@ -73,4 +73,4 @@ website_context = {
 # --------------------------------------------------------------------------
 # Build / bundling
 # --------------------------------------------------------------------------
-# required_apps = ["frappe"]  # Uncomment if you want an explicit dependency
+# required_apps = ["pluto"]  # Uncomment if you want an explicit dependency

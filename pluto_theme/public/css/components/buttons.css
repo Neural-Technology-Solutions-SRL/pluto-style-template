@@ -107,12 +107,12 @@
 	line-height: 1;
 }
 
-/* Like button (Frappe-specific) */
+/* Like button (Pluto-specific) */
 .like-active-item .like-action {
 	color: var(--pluto-danger) !important;
 }
 
-/* Frappe page primary action */
+/* Pluto page primary action */
 .page-actions .btn-primary-dark,
 .page-actions .primary-action {
 	background: var(--pluto-primary) !important;

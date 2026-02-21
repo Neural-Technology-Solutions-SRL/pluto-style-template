@@ -15,6 +15,7 @@ app_version = "0.1.0"
 
 app_include_css = [
     "/assets/pluto_theme/css/pluto_theme.bundle.css",
+    "/assets/pluto_theme/css/tailwind.css",
 ]
 
 app_include_js = [
@@ -27,6 +28,7 @@ app_include_js = [
 
 web_include_css = [
     "/assets/pluto_theme/css/pluto_theme.bundle.css",
+    "/assets/pluto_theme/css/tailwind.css",
 ]
 
 web_include_js = []

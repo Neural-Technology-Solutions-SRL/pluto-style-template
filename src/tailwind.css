@@ -1,0 +1,254 @@
+/* =========================================================================
+   Pluto Theme — Tailwind CSS v4 Integration
+   =========================================================================
+   Full Tailwind import (base + theme + utilities). Tailwind v4 puts all its
+   styles inside named CSS cascade layers (@layer base, theme, utilities).
+   Because Frappe's Bootstrap CSS is *unlayered*, it sits above every Tailwind
+   layer in the cascade and will always win conflicts — so preflight and
+   component styles do not bleed into Frappe's UI.
+
+   When you need a Tailwind utility to override a Frappe style, prefix it
+   with !  (e.g. !text-danger, !p-4) to apply it with !important.
+   ========================================================================= */
+
+@import "tailwindcss";
+
+/* -------------------------------------------------------------------------
+   Content scanning
+   Tailwind scans these paths for class names and generates only what is
+   used. Add any new template or JS directories here as the project grows.
+   ------------------------------------------------------------------------- */
+@source "../pluto_theme/templates/**/*.html";
+@source "../pluto_theme/www/**/*.html";
+@source "../pluto_theme/public/js/**/*.js";
+
+/* -------------------------------------------------------------------------
+   Safelist — always generate these utilities regardless of source scanning.
+   This ensures every class below is ready to use in Frappe's dynamically-
+   rendered HTML (doctypes, widgets, dashboards) that Tailwind cannot scan.
+   ------------------------------------------------------------------------- */
+
+/* Brand & semantic colors */
+@source inline("{bg,text,border}-{primary,primary-light,primary-dark,primary-bg}");
+@source inline("{bg,text,border}-{secondary,secondary-light,secondary-dark}");
+@source inline("{bg,text,border}-{accent,accent-light,accent-dark}");
+@source inline("{bg,text,border}-{success,success-light}");
+@source inline("{bg,text,border}-{warning,warning-light}");
+@source inline("{bg,text,border}-{danger,danger-light}");
+@source inline("{bg,text,border}-{info,info-light}");
+
+/* Neutral gray scale */
+@source inline("{bg,text,border}-gray-{50,100,200,300,400,500,600,700,800,900}");
+
+/* Spacing — padding & margin */
+@source inline("{p,px,py,pt,pb,pl,pr}-{0,1,2,3,4,5,6,7,8,9,10,11,12,14,16,20,24}");
+@source inline("{m,mx,my,mt,mb,ml,mr}-{0,1,2,3,4,5,6,8,12,16,auto}");
+@source inline("gap-{0,1,2,3,4,5,6,8}");
+@source inline("space-x-{1,2,3,4,6,8} space-y-{1,2,3,4,6,8}");
+
+/* Sizing */
+@source inline("w-full w-auto w-screen w-fit");
+@source inline("w-1/2 w-1/3 w-2/3 w-1/4 w-3/4");
+@source inline("h-full h-auto h-screen h-fit");
+@source inline("min-w-0 min-h-0 max-w-full");
+@source inline("max-w-{sm,md,lg,xl,2xl,3xl,4xl,5xl,6xl,full,screen}");
+
+/* Display & layout */
+@source inline("{flex,grid,block,hidden,inline,inline-block,inline-flex,inline-grid}");
+@source inline("flex-{col,row,col-reverse,row-reverse,wrap,nowrap,wrap-reverse,1,auto,none}");
+@source inline("items-{start,center,end,stretch,baseline}");
+@source inline("justify-{start,center,end,between,around,evenly,stretch}");
+@source inline("self-{start,center,end,stretch,auto}");
+@source inline("grid-cols-{1,2,3,4,6,12}");
+@source inline("col-span-{1,2,3,4,6,full}");
+@source inline("col-start-{1,2,3,4}");
+@source inline("row-span-{1,2,3}");
+@source inline("place-items-{start,center,end,stretch}");
+@source inline("place-content-{start,center,end,between}");
+@source inline("grow shrink grow-0 shrink-0");
+
+/* Position */
+@source inline("{relative,absolute,fixed,sticky,static}");
+@source inline("{top,right,bottom,left,inset}-{0,1,2,4,auto,full}");
+@source inline("z-{0,10,20,30,40,50}");
+
+/* Typography */
+@source inline("font-{sans,mono}");
+@source inline("font-{normal,medium,semibold,bold}");
+@source inline("text-{xs,sm,base,lg,xl,2xl,3xl,4xl}");
+@source inline("text-pluto-{xs,sm,base,md,lg,xl,2xl,3xl}");
+@source inline("leading-{none,tight,snug,normal,relaxed,loose}");
+@source inline("tracking-{tighter,tight,normal,wide,wider}");
+@source inline("text-{left,center,right,justify}");
+@source inline("truncate break-words break-all whitespace-nowrap whitespace-normal");
+@source inline("underline no-underline line-through");
+@source inline("uppercase lowercase capitalize normal-case");
+
+/* Border & ring */
+@source inline("{border,border-t,border-r,border-b,border-l}");
+@source inline("border-{0,2,4}");
+@source inline("ring-{0,1,2,4}");
+@source inline("ring-{primary,danger,success,warning,info}");
+@source inline("outline-none outline-hidden");
+
+/* Border radius */
+@source inline("rounded rounded-{none,sm,md,lg,xl,2xl,full}");
+
+/* Shadows */
+@source inline("shadow-{none,xs,sm,md,lg,xl}");
+
+/* Overflow */
+@source inline("overflow-{hidden,auto,scroll,visible,x-auto,y-auto,x-hidden,y-hidden}");
+
+/* Interactivity */
+@source inline("cursor-{pointer,not-allowed,default,move,text}");
+@source inline("select-{none,text,all,auto}");
+@source inline("pointer-events-{none,auto}");
+@source inline("resize-{none,x,y,both}");
+
+/* Opacity & visibility */
+@source inline("opacity-{0,25,50,75,90,100}");
+@source inline("visible invisible");
+
+/* Backgrounds */
+@source inline("bg-transparent bg-current");
+
+/* Transitions & animation */
+@source inline("transition transition-colors transition-all transition-opacity transition-transform transition-shadow");
+@source inline("duration-{75,100,150,200,300,500,700}");
+@source inline("ease-{linear,in,out,in-out}");
+
+/* Hover, focus & state variants */
+@source inline("hover:{bg-primary,bg-primary-bg,bg-gray-50,bg-gray-100}");
+@source inline("hover:{text-primary,text-primary-dark,text-gray-900}");
+@source inline("hover:{border-primary,border-gray-400}");
+@source inline("hover:{opacity-75,opacity-90,shadow-md}");
+@source inline("focus:{outline-none,ring-2,border-primary}");
+@source inline("focus-visible:{ring-2,ring-primary,outline-none}");
+@source inline("disabled:{opacity-50,cursor-not-allowed}");
+@source inline("active:{bg-primary-dark,bg-gray-100,scale-95}");
+
+/* Dark mode variants */
+@source inline("dark:{bg-gray-900,text-gray-100,border-gray-700}");
+
+/* Misc utilities */
+@source inline("sr-only not-sr-only");
+@source inline("antialiased subpixel-antialiased");
+@source inline("list-none list-disc list-decimal");
+@source inline("list-inside list-outside");
+@source inline("{mx,px}-auto");
+@source inline("object-{cover,contain,fill,none}");
+@source inline("aspect-square aspect-video aspect-auto");
+@source inline("rounded-t-{none,sm,md,lg} rounded-b-{none,sm,md,lg}");
+@source inline("rounded-l-{none,sm,md,lg} rounded-r-{none,sm,md,lg}");
+
+
+/* =========================================================================
+   Theme — Pluto design tokens mapped to Tailwind's naming conventions
+   =========================================================================
+   Tailwind v4 emits these as CSS custom properties in @layer theme { :root }
+   and uses them when generating utility classes from the safelist above.
+
+   Generated utility examples:
+     Colors  → bg-primary, text-primary, border-primary
+               bg-success-light, text-danger, bg-gray-100 …
+     Radius  → rounded-sm, rounded, rounded-md, rounded-lg, rounded-xl
+     Shadows → shadow-xs … shadow-xl
+     Fonts   → font-sans, font-mono, text-pluto-xs … text-pluto-3xl
+   ========================================================================= */
+
+@theme {
+
+  /* -----------------------------------------------------------------------
+     Brand colors
+     ---------------------------------------------------------------------- */
+  --color-primary:          #215070;
+  --color-primary-light:    #3E97D1;
+  --color-primary-dark:     #1B1548;
+  --color-primary-bg:       rgba(33, 80, 112, 0.08);
+
+  --color-secondary:        #1B1548;
+  --color-secondary-light:  #565271;
+  --color-secondary-dark:   #1B1548;
+
+  --color-accent:           #215070;
+  --color-accent-light:     #3E97D1;
+  --color-accent-dark:      #1B1548;
+
+  /* -----------------------------------------------------------------------
+     Semantic / feedback colors
+     ---------------------------------------------------------------------- */
+  --color-success:          #0C5F2B;
+  --color-success-light:    #dcfce7;
+
+  --color-warning:          #714D02;
+  --color-warning-light:    #fef9c3;
+
+  --color-danger:           #951919;
+  --color-danger-light:     #fee2e2;
+
+  --color-info:             #215070;
+  --color-info-light:       rgba(33, 80, 112, 0.12);
+
+  /* -----------------------------------------------------------------------
+     Neutral palette — overrides Tailwind's default gray scale
+     with Pluto's branded navy-tinted grays.
+     ---------------------------------------------------------------------- */
+  --color-gray-50:          #FAFAFA;
+  --color-gray-100:         #F5F5F5;
+  --color-gray-200:         #EDEDED;
+  --color-gray-300:         #E3E3E3;
+  --color-gray-400:         #D2D2D2;
+  --color-gray-500:         #565271;
+  --color-gray-600:         #4E4B6C;
+  --color-gray-700:         #403B62;
+  --color-gray-800:         #312C57;
+  --color-gray-900:         #1B1548;
+
+  /* -----------------------------------------------------------------------
+     Typography
+     ---------------------------------------------------------------------- */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
+               Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial,
+               sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "SF Mono", SFMono-Regular,
+               Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Pluto font sizes — prefixed to sit alongside Tailwind's defaults */
+  --text-pluto-xs:    0.6875rem;   /* 11px */
+  --text-pluto-sm:    0.75rem;     /* 12px */
+  --text-pluto-base:  0.8125rem;   /* 13px — Pluto UI default */
+  --text-pluto-md:    0.875rem;    /* 14px */
+  --text-pluto-lg:    1rem;        /* 16px */
+  --text-pluto-xl:    1.25rem;     /* 20px */
+  --text-pluto-2xl:   1.5rem;      /* 24px */
+  --text-pluto-3xl:   1.875rem;    /* 30px */
+
+  /* -----------------------------------------------------------------------
+     Border radius — overrides Tailwind's defaults with Pluto's scale
+     ---------------------------------------------------------------------- */
+  --radius-sm:   0.25rem;    /* 4px  — rounded-sm  */
+  --radius-md:   0.625rem;   /* 10px — rounded-md  */
+  --radius-lg:   0.75rem;    /* 12px — rounded-lg  */
+  --radius-xl:   1rem;       /* 16px — rounded-xl  */
+  --radius-2xl:  1.25rem;    /* 20px — rounded-2xl */
+  --radius-full: 9999px;     /*       — rounded-full */
+  /* The bare `rounded` utility references --radius via Tailwind internals;
+     setting a custom property here keeps the token available in your CSS. */
+  --radius:      0.5rem;     /* 8px  — rounded (bare) */
+
+  /* -----------------------------------------------------------------------
+     Shadows — blue-tinted navy shadows matching Pluto's design language
+     ---------------------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(9, 30, 66, 0.06);
+  --shadow-sm: 0 1px 3px rgba(9, 30, 66, 0.08),
+               0 1px 2px rgba(9, 30, 66, 0.06);
+  --shadow:    0 4px 6px rgba(9, 30, 66, 0.07),
+               0 2px 4px rgba(9, 30, 66, 0.06);
+  --shadow-md: 0 6px 12px rgba(9, 30, 66, 0.08),
+               0  3px 6px rgba(9, 30, 66, 0.06);
+  --shadow-lg: 0 10px 20px rgba(9, 30, 66, 0.10),
+               0  6px  6px rgba(9, 30, 66, 0.06);
+  --shadow-xl: 0 20px 40px rgba(9, 30, 66, 0.12);
+
+}

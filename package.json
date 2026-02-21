@@ -1,0 +1,14 @@
+{
+  "name": "pluto_theme",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Custom theme for Pluto/ERPNext",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./pluto_theme/public/css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./src/tailwind.css -o ./pluto_theme/public/css/tailwind.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.0.0",
+    "tailwindcss": "^4.0.0"
+  }
+}
